@@ -1,0 +1,64 @@
+{
+  "name": "react-native-brainily-input",
+  "author": "Brains and Beards",
+  "version": "1.0.0",
+  "description": "A react-native component which is an input for confirmation code for Android, iOS and React Native Web",
+  "license": "MIT",
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "build": "yarn build",
+    "size": "size-limit",
+    "docs": "yarn doctoc DOCUMENTATION.md"
+  },
+  "dependencies": {
+    "react": "16.11.0",
+    "react-native": "0.62.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
+    "@react-native-community/eslint-config": "^1.0.0",
+    "@size-limit/preset-small-lib": "^4.5.0",
+    "@types/jest": "^24.0.24",
+    "@types/react-native": "^0.62.0",
+    "@types/react-test-renderer": "16.9.2",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "babel-jest": "^24.9.0",
+    "doctoc": "^1.4.0",
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.58.0",
+    "prettier": "^2.0.4",
+    "react-test-renderer": "16.11.0",
+    "typescript": "^3.8.3",
+    "size-limit": "^4.5.0"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "react-native",
+    "react-native-web",
+    "react-native-component",
+    "android",
+    "ios",
+    "code-input",
+    "pin-code",
+    "pin-code-input"
+  ]
+}
