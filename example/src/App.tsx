@@ -2,9 +2,7 @@ import React, {FC, useRef, useState, useCallback} from 'react';
 import {TextInput, View, StyleSheet} from 'react-native';
 import AnimatedNumberInput from 'animated-number-input';
 
-interface IProps {}
-
-const App: FC<IProps> = () => {
+const App: FC = () => {
   const textInputCode = useRef<TextInput>(null);
   const [code, setCode] = useState<string>('');
 
@@ -27,7 +25,7 @@ const App: FC<IProps> = () => {
           numberOfInputs={6}
           onBlur={onBlur}
           onChangeText={onChangeText}
-          textInputCodeRef={textInputCode}
+          // textInputCodeRef={textInputCode}
           onSubmit={onSubmit}
         />
       </View>

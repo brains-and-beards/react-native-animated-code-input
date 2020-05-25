@@ -1,4 +1,4 @@
-import React, {FC, useCallback} from 'react';
+import React, {FC, useCallback, useRef} from 'react';
 import {
   View,
   TextInput,
@@ -14,14 +14,15 @@ import InputField from './InputField';
 interface IProps extends ICodeInputProps {
   numberOfInputs: number;
   code: string;
-  onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
-  onChangeText: (text: string) => void;
+  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
+  onChangeText?: (text: string) => void;
   onSubmit: (codeValue: string) => void;
   textInputCodeRef: React.RefObject<TextInput>;
 }
 
 const AnimatedNumberInput: FC<IProps> = (props) => {
   const {code, numberOfInputs, onBlur, onChangeText, onSubmit, textInputCodeRef} = props;
+  const animatedNumberInputRef = useRef<TextInput>(null);
 
   const renderItem = useCallback(
     (index: number) => <InputSingleItem code={code} key={`InputSingleItem ${index}`} index={index} {...props} />,
@@ -44,17 +45,17 @@ const AnimatedNumberInput: FC<IProps> = (props) => {
     <>
       <TouchableOpacity onPress={onPressCode} style={styles.items} activeOpacity={1}>
         <View style={styles.container}>
-          {Array(numberOfInputs)
+          {Array(numberOfInputs || 1)
             .fill(0)
             .map((_item, index) => renderItem(index))}
         </View>
       </TouchableOpacity>
       <InputField
-        textInputCode={textInputCodeRef}
+        textInputCode={textInputCodeRef || animatedNumberInputRef}
         autoFocus={true}
         onChangeText={onChangeText}
         onBlur={onBlur}
-        codeMaxLength={numberOfInputs}
+        codeMaxLength={numberOfInputs || 1}
         codeValue={code}
         testID={'Code_Input'}
         onSubmit={onCodeSubmit}

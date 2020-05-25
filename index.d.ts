@@ -45,7 +45,7 @@ declare module 'animated-number-input' {
     onBlur: (e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputFocusEventData>) => void;
     onChangeText: (text: string) => void;
     onSubmit: (codeValue: string) => void;
-    textInputCodeRef: ReactNative.RefObject<ReactNative.TextInput>;
+    textInputCodeRef?: ReactNative.RefObject<ReactNative.TextInput>;
   }
 
   export default class AnimatedNumberInput extends React.Component<AnimatedNumberInputProps, any> {}
