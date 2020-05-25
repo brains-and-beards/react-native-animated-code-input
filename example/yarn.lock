@@ -1231,8 +1231,11 @@ ajv@^6.10.0, ajv@^6.10.2, ajv@^6.5.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-"animated-number-input@file:../src":
-  version "0.0.0"
+"animated-number-input@file:..":
+  version "1.0.0"
+  dependencies:
+    react "16.11.0"
+    react-native "0.62.2"
 
 anser@^1.4.9:
   version "1.4.9"

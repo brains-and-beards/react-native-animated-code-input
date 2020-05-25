@@ -1,6 +1,5 @@
 import React, {FC, useRef, useState, useCallback} from 'react';
 import {TextInput, View, StyleSheet} from 'react-native';
-// import BrainilyInput from '../src/components/BrainilyInput';
 import AnimatedNumberInput from 'animated-number-input';
 
 interface IProps {}
