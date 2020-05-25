@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useRef} from 'react';
+import React, {FC, useCallback} from 'react';
 import {
   TextInput,
   NativeSyntheticEvent,
@@ -14,58 +14,71 @@ interface IProps {
   codeValue?: string;
   onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   onChangeText: (text: string) => void;
+  onSubmit: () => void;
   textContentType?: string;
   testID?: string;
   textInputCode: React.RefObject<TextInput>;
-  onSubmit: () => void;
 }
 
 const NUMBER_REGEX = /[^0-9]/g;
 
 const InputField: FC<IProps> = (props) => {
-  const {codeValue, codeMaxLength, onSubmit} = props;
+  const {
+    autoFocus,
+    codeMaxLength,
+    codeValue,
+    onBlur,
+    onChangeText,
+    onSubmit,
+    testID,
+    textContentType,
+    textInputCode,
+  } = props;
 
-  const onChangeText = useCallback((text: string) => {
-    const value = text.replace(NUMBER_REGEX, '');
-    const codeChanged = value !== codeValue;
-    props.onChangeText(value);
-    if (codeChanged) {
-      if (value.length === codeMaxLength) {
-        Keyboard.dismiss();
+  const onChangeTextCallback = useCallback(
+    (text: string) => {
+      const value = text.replace(NUMBER_REGEX, '');
+      const codeChanged = value !== codeValue;
+      onChangeText(value);
+      if (codeChanged) {
+        if (value.length === codeMaxLength) {
+          Keyboard.dismiss();
+        }
       }
-    }
-  }, []);
+    },
+    [codeMaxLength, codeValue, onChangeText],
+  );
 
-  const onBlur = useCallback(
+  const onBlurCallback = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
       InteractionManager.runAfterInteractions(() => {
         onSubmit();
       });
-      props.onBlur(e);
+      onBlur(e);
     },
-    [codeValue],
+    [onSubmit, onBlur],
   );
 
   return (
     <TextInput
-      autoFocus={props.autoFocus}
+      autoFocus={autoFocus}
       caretHidden={true}
       keyboardType="number-pad"
-      onBlur={onBlur}
-      onChangeText={onChangeText}
-      maxLength={props.codeMaxLength}
-      ref={props.textInputCode}
+      onBlur={onBlurCallback}
+      onChangeText={onChangeTextCallback}
+      maxLength={codeMaxLength}
+      ref={textInputCode}
       style={styles.input}
-      testID={props.testID}
-      textContentType={props.textContentType ? 'oneTimeCode' : undefined}
-      value={props.codeValue}
+      testID={testID}
+      textContentType={textContentType ? 'oneTimeCode' : undefined}
+      value={codeValue}
     />
   );
 };
 
 const styles = StyleSheet.create({
   input: {
-    fontSize: 0,
+    fontSize: 1,
     height: 1,
     margin: 0,
     opacity: 0,

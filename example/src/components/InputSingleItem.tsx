@@ -31,20 +31,22 @@ export interface ICodeInputProps {
   cursorStyle?: {
     color?: string;
     fontSize?: number;
+    marginLeft?: number;
+    marginTop?: number;
     customStyle?: StyleProp<TextProps>;
   };
   timeout?: number;
 }
 
 const DEFAULT_BACKGROUND_COLOR = '#F3F0F3';
-const NUMBER_ANIMATION_DURATION = 400;
-const CURSOR_ANIMATION_DURATION = 700;
+const NUMBER_ANIMATION_DURATION = 300;
+const CURSOR_ANIMATION_DURATION = 500;
 const DEFAULT_CURSOR_COLOR = '#4A72FF';
 const DEFAULT_WIDTH = 55;
 const DEFAULT_HEIGHT = 70;
 const DEFAULT_FONT_SIZE = 30;
 const DEFAULT_FONT_WEIGHT = 'bold';
-const DEFAULT_TIMEOUT = 500;
+const DEFAULT_TIMEOUT = 100;
 
 export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => {
   const [textValue, setTextValue] = useState('');
@@ -92,8 +94,8 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
   }, []);
 
   useEffect(() => {
-    const currentIndex = props.index ? props.index : 0;
-    const text = props.code.length <= currentIndex ? '' : props.code.substr(currentIndex, 1);
+    const currentIndex = index ? index : 0;
+    const text = code.length <= currentIndex ? '' : code.substr(currentIndex, 1);
     if (text.length < textValue.length) {
       resetAnimationAfterDelete();
     }
@@ -107,7 +109,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
         timeout ? timeout : DEFAULT_TIMEOUT,
       );
     }
-  }, [props.code, props.index, timeout, start, textValue, resetAnimationAfterDelete]);
+  }, [code, index, timeout, start, textValue, resetAnimationAfterDelete]);
 
   useEffect(() => {
     if (textValue.length === 0) {
@@ -123,11 +125,11 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
   return (
     <View
       style={
-        props.code.length === props.index
-          ? [styles.codeContainer, activeCodeContainerStyle]
-          : [styles.codeContainer, codeContainerStyle]
+        code.length === index
+          ? [styles.codeContainer, activeCodeContainerStyle, activeCodeContainerStyle?.customStyle]
+          : [styles.codeContainer, codeContainerStyle, codeContainerStyle?.customStyle]
       }
-      key={`code-field ${props.index ? props.index : 0}`}>
+      key={`code-field ${index ? index : 0}`}>
       <Animated.View
         style={{
           opacity: animatedValue,
@@ -147,7 +149,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
           style={{
             opacity: animatedValueCursor,
           }}>
-          <Text style={[styles.cursor, cursorStyle]}>{'|'}</Text>
+          <Text style={[styles.cursor, cursorStyle, cursorStyle?.customStyle]}>{'|'}</Text>
         </Animated.View>
       )}
     </View>

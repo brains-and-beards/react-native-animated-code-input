@@ -1,1 +1,1 @@
-export {default as BrainilyInput} from './BrainilyInput';
+export {default as AnimatedNumberInput} from './AnimatedNumberInput';

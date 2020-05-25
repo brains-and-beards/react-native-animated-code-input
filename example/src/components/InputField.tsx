@@ -14,16 +14,26 @@ interface IProps {
   codeValue?: string;
   onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   onChangeText: (text: string) => void;
+  onSubmit: () => void;
   textContentType?: string;
   testID?: string;
   textInputCode: React.RefObject<TextInput>;
-  onSubmit: () => void;
 }
 
 const NUMBER_REGEX = /[^0-9]/g;
 
 const InputField: FC<IProps> = (props) => {
-  const {codeValue, codeMaxLength, onSubmit, onChangeText, onBlur} = props;
+  const {
+    autoFocus,
+    codeMaxLength,
+    codeValue,
+    onBlur,
+    onChangeText,
+    onSubmit,
+    testID,
+    textContentType,
+    textInputCode,
+  } = props;
 
   const onChangeTextCallback = useCallback(
     (text: string) => {
@@ -51,24 +61,24 @@ const InputField: FC<IProps> = (props) => {
 
   return (
     <TextInput
-      autoFocus={props.autoFocus}
+      autoFocus={autoFocus}
       caretHidden={true}
       keyboardType="number-pad"
       onBlur={onBlurCallback}
       onChangeText={onChangeTextCallback}
-      maxLength={props.codeMaxLength}
-      ref={props.textInputCode}
+      maxLength={codeMaxLength}
+      ref={textInputCode}
       style={styles.input}
-      testID={props.testID}
-      textContentType={props.textContentType ? 'oneTimeCode' : undefined}
-      value={props.codeValue}
+      testID={testID}
+      textContentType={textContentType ? 'oneTimeCode' : undefined}
+      value={codeValue}
     />
   );
 };
 
 const styles = StyleSheet.create({
   input: {
-    fontSize: 0,
+    fontSize: 1,
     height: 1,
     margin: 0,
     opacity: 0,

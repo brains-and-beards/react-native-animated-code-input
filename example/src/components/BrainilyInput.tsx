@@ -16,12 +16,12 @@ interface IProps extends ICodeInputProps {
   code: string;
   onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   onChangeText: (text: string) => void;
-  textInputCodeRef: React.RefObject<TextInput>;
   onSubmit: (codeValue: string) => void;
+  textInputCodeRef: React.RefObject<TextInput>;
 }
 
 const BrainilyInput: FC<IProps> = (props) => {
-  const {code, numberOfInputs, textInputCodeRef, onChangeText, onBlur, onSubmit} = props;
+  const {code, numberOfInputs, onBlur, onChangeText, onSubmit, textInputCodeRef} = props;
 
   const renderItem = useCallback(
     (index: number) => <InputSingleItem code={code} key={`InputSingleItem ${index}`} index={index} {...props} />,
@@ -37,12 +37,12 @@ const BrainilyInput: FC<IProps> = (props) => {
   }, [textInputCodeRef]);
 
   const onCodeSubmit = useCallback(() => {
-    onSubmit(props.code);
-  }, [props.code, onSubmit]);
+    onSubmit(code);
+  }, [code, onSubmit]);
 
   return (
     <>
-      <TouchableOpacity onPress={onPressCode} style={styles.items} activeOpacity={1}>
+      <TouchableOpacity activeOpacity={1} onPress={onPressCode} style={styles.items}>
         <View style={styles.container}>
           {Array(numberOfInputs)
             .fill(0)

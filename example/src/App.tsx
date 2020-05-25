@@ -1,6 +1,7 @@
 import React, {FC, useRef, useState, useCallback} from 'react';
 import {TextInput, View, StyleSheet} from 'react-native';
-import BrainilyInput from '../src/components/BrainilyInput';
+// import BrainilyInput from '../src/components/BrainilyInput';
+import AnimatedNumberInput from 'animated-number-input';
 
 interface IProps {}
 
@@ -22,7 +23,7 @@ const App: FC<IProps> = () => {
   return (
     <>
       <View style={styles.container}>
-        <BrainilyInput
+        <AnimatedNumberInput
           code={code}
           numberOfInputs={6}
           onBlur={onBlur}

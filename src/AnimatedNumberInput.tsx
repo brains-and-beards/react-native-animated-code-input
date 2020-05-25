@@ -16,48 +16,33 @@ interface IProps extends ICodeInputProps {
   code: string;
   onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   onChangeText: (text: string) => void;
-  textInputCodeRef: React.RefObject<TextInput>;
   onSubmit: (codeValue: string) => void;
+  textInputCodeRef: React.RefObject<TextInput>;
 }
 
-const BrainilyInput: FC<IProps> = (props) => {
-  const {
-    code,
-    numberOfInputs,
-    textInputCodeRef,
-    onChangeText,
-    onBlur,
-    onSubmit,
-  } = props;
+const AnimatedNumberInput: FC<IProps> = (props) => {
+  const {code, numberOfInputs, onBlur, onChangeText, onSubmit, textInputCodeRef} = props;
 
   const renderItem = useCallback(
-    (index: number) => (
-      <InputSingleItem
-        code={code}
-        key={`InputSingleItem ${index}`}
-        index={index}
-        {...props}
-      />
-    ),
-    [code],
+    (index: number) => <InputSingleItem code={code} key={`InputSingleItem ${index}`} index={index} {...props} />,
+    [code, props],
   );
 
   const onPressCode = useCallback(() => {
-    if (textInputCodeRef === null) return;
+    if (textInputCodeRef === null) {
+      return;
+    }
 
     textInputCodeRef.current?.focus();
-  }, []);
+  }, [textInputCodeRef]);
 
   const onCodeSubmit = useCallback(() => {
-    onSubmit(props.code);
-  }, [props.code]);
+    onSubmit(code);
+  }, [code, onSubmit]);
 
   return (
     <>
-      <TouchableOpacity
-        onPress={onPressCode}
-        style={styles.items}
-        activeOpacity={1}>
+      <TouchableOpacity onPress={onPressCode} style={styles.items} activeOpacity={1}>
         <View style={styles.container}>
           {Array(numberOfInputs)
             .fill(0)
@@ -86,4 +71,4 @@ const styles = StyleSheet.create({
   items: {alignItems: 'stretch'},
 });
 
-export default BrainilyInput;
+export default AnimatedNumberInput;

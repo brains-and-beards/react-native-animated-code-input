@@ -1,13 +1,5 @@
 import React, {FC, useState, useEffect, useCallback} from 'react';
-import {
-  View,
-  Text,
-  ViewStyle,
-  StyleSheet,
-  StyleProp,
-  Animated,
-  TextProps,
-} from 'react-native';
+import {View, Text, ViewStyle, StyleSheet, StyleProp, Animated, TextProps} from 'react-native';
 
 export interface ICodeInputProps {
   cursorAnimationDuration?: number;
@@ -23,18 +15,7 @@ export interface ICodeInputProps {
     codeHeight?: number;
     inputFontSize?: number;
     borderRadius?: number;
-    fontWeight?:
-      | 'normal'
-      | 'bold'
-      | '100'
-      | '200'
-      | '300'
-      | '400'
-      | '500'
-      | '600'
-      | '700'
-      | '800'
-      | '900';
+    fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
     customStyle?: StyleProp<ViewStyle>;
   };
   activeCodeContainerStyle?: {
@@ -44,46 +25,33 @@ export interface ICodeInputProps {
     codeHeight?: number;
     inputFontSize?: number;
     borderRadius?: number;
-    fontWeight?:
-      | 'normal'
-      | 'bold'
-      | '100'
-      | '200'
-      | '300'
-      | '400'
-      | '500'
-      | '600'
-      | '700'
-      | '800'
-      | '900';
+    fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
     customStyle?: StyleProp<ViewStyle>;
   };
   cursorStyle?: {
     color?: string;
     fontSize?: number;
+    marginLeft?: number;
+    marginTop?: number;
     customStyle?: StyleProp<TextProps>;
   };
   timeout?: number;
 }
 
 const DEFAULT_BACKGROUND_COLOR = '#F3F0F3';
-const NUMBER_ANIMATION_DURATION = 400;
-const CURSOR_ANIMATION_DURATION = 700;
+const NUMBER_ANIMATION_DURATION = 300;
+const CURSOR_ANIMATION_DURATION = 500;
 const DEFAULT_CURSOR_COLOR = '#4A72FF';
 const DEFAULT_WIDTH = 55;
 const DEFAULT_HEIGHT = 70;
 const DEFAULT_FONT_SIZE = 30;
 const DEFAULT_FONT_WEIGHT = 'bold';
-const DEFAULT_TIMEOUT = 500;
+const DEFAULT_TIMEOUT = 100;
 
-export const InputSingleItem: FC<ICodeInputProps> = (
-  props: ICodeInputProps,
-) => {
+export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => {
   const [textValue, setTextValue] = useState('');
   const [animatedValue, setAnimatedValue] = useState(new Animated.Value(0));
-  const [animatedValueCursor, setAnimatedValueCursor] = useState(
-    new Animated.Value(0),
-  );
+  const [animatedValueCursor, setAnimatedValueCursor] = useState(new Animated.Value(0));
 
   const {
     activeCodeContainerStyle,
@@ -99,39 +67,35 @@ export const InputSingleItem: FC<ICodeInputProps> = (
   const start = useCallback(() => {
     Animated.timing(animatedValue, {
       toValue: 1,
-      duration: codeAnimationDuration
-        ? codeAnimationDuration
-        : NUMBER_ANIMATION_DURATION,
+      duration: codeAnimationDuration ? codeAnimationDuration : NUMBER_ANIMATION_DURATION,
       useNativeDriver: true,
     }).start();
-  }, [animatedValue]);
+  }, [animatedValue, codeAnimationDuration]);
 
   const startCursor = useCallback(() => {
     Animated.timing(animatedValueCursor, {
       toValue: 1,
-      duration: cursorAnimationDuration
-        ? cursorAnimationDuration
-        : CURSOR_ANIMATION_DURATION,
+      duration: cursorAnimationDuration ? cursorAnimationDuration : CURSOR_ANIMATION_DURATION,
       useNativeDriver: true,
     }).start(() => {
       Animated.timing(animatedValueCursor, {
         toValue: 0,
-        duration: cursorAnimationDuration
-          ? cursorAnimationDuration
-          : CURSOR_ANIMATION_DURATION,
+        duration: cursorAnimationDuration ? cursorAnimationDuration : CURSOR_ANIMATION_DURATION,
         useNativeDriver: true,
       }).start(() => {
         startCursor();
       });
     });
-  }, [animatedValueCursor]);
+  }, [animatedValueCursor, cursorAnimationDuration]);
+
+  const resetAnimationAfterDelete = useCallback(() => {
+    setAnimatedValueCursor(new Animated.Value(0));
+    setAnimatedValue(new Animated.Value(0));
+  }, []);
 
   useEffect(() => {
-    const currentIndex = props.index ? props.index : 0;
-    const text =
-      props.code.length <= currentIndex
-        ? ''
-        : props.code.substr(currentIndex, 1);
+    const currentIndex = index ? index : 0;
+    const text = code.length <= currentIndex ? '' : code.substr(currentIndex, 1);
     if (text.length < textValue.length) {
       resetAnimationAfterDelete();
     }
@@ -145,7 +109,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
         timeout ? timeout : DEFAULT_TIMEOUT,
       );
     }
-  }, [props.code, props.index]);
+  }, [code, index, timeout, start, textValue, resetAnimationAfterDelete]);
 
   useEffect(() => {
     if (textValue.length === 0) {
@@ -156,21 +120,16 @@ export const InputSingleItem: FC<ICodeInputProps> = (
         timeout ? timeout : DEFAULT_TIMEOUT,
       );
     }
-  }, [textValue]);
-
-  const resetAnimationAfterDelete = useCallback(() => {
-    setAnimatedValueCursor(new Animated.Value(0));
-    setAnimatedValue(new Animated.Value(0));
-  }, []);
+  }, [textValue, timeout, startCursor]);
 
   return (
     <View
       style={
-        props.code.length === props.index
-          ? [styles.codeContainer, activeCodeContainerStyle]
-          : [styles.codeContainer, codeContainerStyle]
+        code.length === index
+          ? [styles.codeContainer, activeCodeContainerStyle, activeCodeContainerStyle?.customStyle]
+          : [styles.codeContainer, codeContainerStyle, codeContainerStyle?.customStyle]
       }
-      key={`code-field ${props.index ? props.index : 0}`}>
+      key={`code-field ${index ? index : 0}`}>
       <Animated.View
         style={{
           opacity: animatedValue,
@@ -178,12 +137,8 @@ export const InputSingleItem: FC<ICodeInputProps> = (
         <Text
           style={[
             {
-              fontSize: codeContainerStyle?.inputFontSize
-                ? codeContainerStyle?.inputFontSize
-                : DEFAULT_FONT_SIZE,
-              fontWeight: codeContainerStyle?.fontWeight
-                ? codeContainerStyle?.fontWeight
-                : DEFAULT_FONT_WEIGHT,
+              fontSize: codeContainerStyle?.inputFontSize ? codeContainerStyle?.inputFontSize : DEFAULT_FONT_SIZE,
+              fontWeight: codeContainerStyle?.fontWeight ? codeContainerStyle?.fontWeight : DEFAULT_FONT_WEIGHT,
             },
           ]}>
           {textValue}
@@ -194,7 +149,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
           style={{
             opacity: animatedValueCursor,
           }}>
-          <Text style={[styles.cursor, cursorStyle]}>{'|'}</Text>
+          <Text style={[styles.cursor, cursorStyle, cursorStyle?.customStyle]}>{'|'}</Text>
         </Animated.View>
       )}
     </View>
