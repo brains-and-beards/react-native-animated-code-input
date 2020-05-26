@@ -1,6 +1,7 @@
-import React, {FC, useState, useCallback} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import AnimatedNumberInput from 'animated-number-input';
+import React, { FC, useState, useCallback } from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+// import AnimatedNumberInput from 'animated-number-input';
+import AnimatedNumberInput from '../lib/AnimatedNumberInput';
 
 const App: FC = () => {
   const [code, setCode] = useState<string>('');
@@ -12,9 +13,7 @@ const App: FC = () => {
 
   const onBlur = useCallback(() => {}, []);
 
-  const onSubmit = useCallback((codeValue: string) => {
-    console.log('DONE ', codeValue);
-  }, []);
+  const onSubmit = useCallback((codeValue: string) => {}, []);
 
   return (
     <>
@@ -28,7 +27,7 @@ const App: FC = () => {
           onSubmit={onSubmit}
         />
 
-        <View style={{margin: 10}} />
+        <View style={{ margin: 10 }} />
 
         <AnimatedNumberInput
           code={code}
@@ -37,12 +36,14 @@ const App: FC = () => {
           onChangeText={onChangeText}
           onSubmit={onSubmit}
           textColor={'white'}
-          activeCodeContainerStyle={{customStyle: styles.customActiveCodeContainer}}
-          codeContainerStyle={{customStyle: styles.customCodeContainer}}
+          activeCodeContainerStyle={{
+            customStyle: styles.customActiveCodeContainer,
+          }}
+          codeContainerStyle={{ customStyle: styles.customCodeContainer }}
           cursorStyle={styles.customCursorStyle}
         />
 
-        <View style={{margin: 10}} />
+        <View style={{ margin: 10 }} />
 
         <AnimatedNumberInput
           code={code}
@@ -51,8 +52,10 @@ const App: FC = () => {
           onChangeText={onChangeText}
           onSubmit={onSubmit}
           textColor={'black'}
-          activeCodeContainerStyle={{customStyle: styles.borderActiveCodeContainer}}
-          codeContainerStyle={{customStyle: styles.borderCodeContainer}}
+          activeCodeContainerStyle={{
+            customStyle: styles.borderActiveCodeContainer,
+          }}
+          codeContainerStyle={{ customStyle: styles.borderCodeContainer }}
           cursorStyle={styles.cursorStyle}
         />
       </View>

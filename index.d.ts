@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as ReactNative from 'react-native';
+import * as React from "react";
+import * as ReactNative from "react-native";
 
-declare module 'animated-number-input' {
+declare module "animated-number-input" {
   interface ICodeInputProps {
     cursorAnimationDuration?: number;
     codeAnimationDuration?: number;
@@ -16,7 +16,18 @@ declare module 'animated-number-input' {
       codeHeight?: number;
       inputFontSize?: number;
       borderRadius?: number;
-      fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+      fontWeight?:
+        | "normal"
+        | "bold"
+        | "100"
+        | "200"
+        | "300"
+        | "400"
+        | "500"
+        | "600"
+        | "700"
+        | "800"
+        | "900";
       customStyle?: ReactNative.StyleProp<ReactNative.ViewStyle>;
     };
     activeCodeContainerStyle?: {
@@ -26,7 +37,18 @@ declare module 'animated-number-input' {
       codeHeight?: number;
       inputFontSize?: number;
       borderRadius?: number;
-      fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+      fontWeight?:
+        | "normal"
+        | "bold"
+        | "100"
+        | "200"
+        | "300"
+        | "400"
+        | "500"
+        | "600"
+        | "700"
+        | "800"
+        | "900";
       customStyle?: ReactNative.StyleProp<ReactNative.ViewStyle>;
     };
     cursorStyle?: {
@@ -42,10 +64,15 @@ declare module 'animated-number-input' {
   interface AnimatedNumberInputProps extends ICodeInputProps {
     numberOfInputs: number;
     code: string;
-    onBlur: (e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputFocusEventData>) => void;
+    onBlur: (
+      e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputFocusEventData>
+    ) => void;
     onChangeText: (text: string) => void;
     onSubmit: (codeValue: string) => void;
   }
 
-  export default class AnimatedNumberInput extends React.Component<AnimatedNumberInputProps, any> {}
+  export default class AnimatedNumberInput extends React.Component<
+    AnimatedNumberInputProps,
+    any
+  > {}
 }

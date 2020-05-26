@@ -1,2 +1,2 @@
-import AnimatedNumberInput from './lib';
+import AnimatedNumberInput from "./lib";
 export default AnimatedNumberInput;

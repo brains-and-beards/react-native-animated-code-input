@@ -7,15 +7,20 @@ A React Native component for animated code input for iOS, Android and React Nati
 ## Getting started
 
 ```
-
-add package info
-
 npm 
 
 yarn
 ```
 
+Run example:
 
+```
+ cd example
+ yarn install
+ cd ios
+ pod install
+ cd ..
+ react-native run-ios
 ## Example
 
 

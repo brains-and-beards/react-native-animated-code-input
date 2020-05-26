@@ -15,7 +15,7 @@ interface IProps extends ICodeInputProps {
   numberOfInputs: number;
   code: string;
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
-  onChangeText?: (text: string) => void;
+  onChangeText: (text: string) => void;
   onSubmit: (codeValue: string) => void;
 }
 
