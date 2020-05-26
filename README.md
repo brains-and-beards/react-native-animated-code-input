@@ -79,4 +79,3 @@ Properties for this component:
 | `onBlur`                      | function     | void    | callback that is called when the text input is blurred.     |
 | `onChangeText` (**Required**) | function     | void    | callback that is called when the text input's text changes. |
 | `onSubmit` (**Required**)     | function     | void    | callback function called when every code input has a value  |
-| `textInputCodeRef`            | object       | null    | code text input reference                                   |

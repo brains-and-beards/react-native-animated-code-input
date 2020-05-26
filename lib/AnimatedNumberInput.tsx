@@ -17,11 +17,10 @@ interface IProps extends ICodeInputProps {
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   onChangeText?: (text: string) => void;
   onSubmit: (codeValue: string) => void;
-  textInputCodeRef: React.RefObject<TextInput>;
 }
 
 const AnimatedNumberInput: FC<IProps> = (props) => {
-  const {code, numberOfInputs, onBlur, onChangeText, onSubmit, textInputCodeRef} = props;
+  const {code, numberOfInputs, onBlur, onChangeText, onSubmit} = props;
   const animatedNumberInputRef = useRef<TextInput>(null);
 
   const renderItem = useCallback(
@@ -30,12 +29,12 @@ const AnimatedNumberInput: FC<IProps> = (props) => {
   );
 
   const onPressCode = useCallback(() => {
-    if (textInputCodeRef === null) {
+    if (animatedNumberInputRef === null) {
       return;
     }
 
-    textInputCodeRef.current?.focus();
-  }, [textInputCodeRef]);
+    animatedNumberInputRef.current?.focus();
+  }, [animatedNumberInputRef]);
 
   const onCodeSubmit = useCallback(() => {
     onSubmit(code);
@@ -51,7 +50,7 @@ const AnimatedNumberInput: FC<IProps> = (props) => {
         </View>
       </TouchableOpacity>
       <InputField
-        textInputCode={textInputCodeRef || animatedNumberInputRef}
+        textInputCode={animatedNumberInputRef}
         autoFocus={true}
         onChangeText={onChangeText}
         onBlur={onBlur}

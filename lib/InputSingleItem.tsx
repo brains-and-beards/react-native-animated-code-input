@@ -6,7 +6,7 @@ export interface ICodeInputProps {
   codeAnimationDuration?: number;
   code: string;
   index?: number;
-  selectedInputBigger?: boolean;
+  textColor?: string;
   // style props
   codeContainerStyle?: {
     backgroundColor?: string;
@@ -47,6 +47,7 @@ const DEFAULT_HEIGHT = 70;
 const DEFAULT_FONT_SIZE = 30;
 const DEFAULT_FONT_WEIGHT = 'bold';
 const DEFAULT_TIMEOUT = 100;
+const DEFAULT_TEXT_COLOR = 'black';
 
 export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => {
   const [textValue, setTextValue] = useState('');
@@ -61,6 +62,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
     cursorAnimationDuration,
     cursorStyle,
     index,
+    textColor,
     timeout,
   } = props;
 
@@ -139,6 +141,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
             {
               fontSize: codeContainerStyle?.inputFontSize ? codeContainerStyle?.inputFontSize : DEFAULT_FONT_SIZE,
               fontWeight: codeContainerStyle?.fontWeight ? codeContainerStyle?.fontWeight : DEFAULT_FONT_WEIGHT,
+              color: textColor ? textColor : DEFAULT_TEXT_COLOR,
             },
           ]}>
           {textValue}
