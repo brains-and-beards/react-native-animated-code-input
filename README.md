@@ -37,17 +37,21 @@ import {TextInput, View, StyleSheet} from 'react-native';
 import AnimatedNumberInput from 'animated-number-input';
 
 const App: FC = () => {
-  const textInputCode = useRef<TextInput>(null);
-  const [code, setCode] = useState<string>('');
-
+  const [code, setCode] = useState<string>("");
+  
   const onChangeText = useCallback((text: string) => {
-    console.log('code', text);
     setCode(text);
   }, []);
 
   const onSubmit = useCallback((codeValue: string) => {
-    console.log('DONE ', codeValue);
+    Alert.alert(
+      "DONE",
+      codeValue,
+      [{ text: "OK", onPress: () => setCode("") }],
+      { cancelable: false }
+    );
   }, []);
+
 
   return (
     <>
