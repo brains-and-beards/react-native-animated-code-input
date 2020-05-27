@@ -34,7 +34,7 @@ Run example:
 ## Example
 
 
-```
+```js
 import React, {FC, useRef, useState, useCallback} from 'react';
 import {TextInput, View, StyleSheet} from 'react-native';
 import AnimatedNumberInput from 'animated-number-input';
