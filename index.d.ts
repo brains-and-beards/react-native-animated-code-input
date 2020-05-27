@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as ReactNative from 'react-native';
+import * as React from "react";
+import * as ReactNative from "react-native";
 
-declare module 'animated-number-input' {
+declare module "animated-number-input" {
   interface ICodeInputProps {
     afterInputDelay?: number;
     cursorAnimationDuration?: number;
@@ -17,17 +17,17 @@ declare module 'animated-number-input' {
       inputFontSize?: number;
       borderRadius?: number;
       fontWeight?:
-        | 'normal'
-        | 'bold'
-        | '100'
-        | '200'
-        | '300'
-        | '400'
-        | '500'
-        | '600'
-        | '700'
-        | '800'
-        | '900';
+        | "normal"
+        | "bold"
+        | "100"
+        | "200"
+        | "300"
+        | "400"
+        | "500"
+        | "600"
+        | "700"
+        | "800"
+        | "900";
       customStyle?: ReactNative.StyleProp<ReactNative.ViewStyle>;
     };
     activeCodeContainerStyle?: {
@@ -38,17 +38,17 @@ declare module 'animated-number-input' {
       inputFontSize?: number;
       borderRadius?: number;
       fontWeight?:
-        | 'normal'
-        | 'bold'
-        | '100'
-        | '200'
-        | '300'
-        | '400'
-        | '500'
-        | '600'
-        | '700'
-        | '800'
-        | '900';
+        | "normal"
+        | "bold"
+        | "100"
+        | "200"
+        | "300"
+        | "400"
+        | "500"
+        | "600"
+        | "700"
+        | "800"
+        | "900";
       customStyle?: ReactNative.StyleProp<ReactNative.ViewStyle>;
     };
     cursorStyle?: {
@@ -70,34 +70,34 @@ declare module 'animated-number-input' {
     onChangeText?: (text: string) => void;
     onSubmit?: () => void;
     textContentType?:
-      | 'none'
-      | 'URL'
-      | 'addressCity'
-      | 'addressCityAndState'
-      | 'addressState'
-      | 'countryName'
-      | 'creditCardNumber'
-      | 'emailAddress'
-      | 'familyName'
-      | 'fullStreetAddress'
-      | 'givenName'
-      | 'jobTitle'
-      | 'location'
-      | 'middleName'
-      | 'name'
-      | 'namePrefix'
-      | 'nameSuffix'
-      | 'nickname'
-      | 'organizationName'
-      | 'postalCode'
-      | 'streetAddressLine1'
-      | 'streetAddressLine2'
-      | 'sublocality'
-      | 'telephoneNumber'
-      | 'username'
-      | 'password'
-      | 'newPassword'
-      | 'oneTimeCode';
+      | "none"
+      | "URL"
+      | "addressCity"
+      | "addressCityAndState"
+      | "addressState"
+      | "countryName"
+      | "creditCardNumber"
+      | "emailAddress"
+      | "familyName"
+      | "fullStreetAddress"
+      | "givenName"
+      | "jobTitle"
+      | "location"
+      | "middleName"
+      | "name"
+      | "namePrefix"
+      | "nameSuffix"
+      | "nickname"
+      | "organizationName"
+      | "postalCode"
+      | "streetAddressLine1"
+      | "streetAddressLine2"
+      | "sublocality"
+      | "telephoneNumber"
+      | "username"
+      | "password"
+      | "newPassword"
+      | "oneTimeCode";
   }
 
   interface AnimatedNumberInputProps extends ICodeInputProps, IInputProps {
