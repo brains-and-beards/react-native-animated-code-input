@@ -4,13 +4,10 @@ A React Native component for animated code input for iOS, Android and React Nati
 
 ## Demo
 
-Android: 
+Android            |  iOS
+:-------------------------:|:-------------------------:
+![](android.gif)           |  ![](ios.gif)
 
-![](android.gif)
-
-iOS:
-
-![](ios.gif)
 
 ## Getting started
 
