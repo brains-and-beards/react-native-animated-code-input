@@ -95,3 +95,17 @@ Properties for this component:
 | `onBlur`                      | function     | void    | callback that is called when the text input loses focus.    |
 | `onChangeText` (**Required**) | function     | void    | callback that is called when the text input's text changes. |
 | `onSubmit` (**Required**)     | function     | void    | callback function called when every code input has a value  |
+
+
+## Made with 💛 at Brains and Beards
+
+Show some 💛 and star the repo to support the project
+
+[![GitHub stars](https://img.shields.io/github/stars/brains-and-beards/animated-pin-input.svg?style=social&label=Star)](https://github.com/brains-and-beards/animated-pin-input) [![GitHub forks](https://img.shields.io/github/forks/brains-and-beards/animated-pin-input.svg?style=social&label=Fork)](https://github.com/brains-and-beards/animated-pin-input/fork) [![GitHub watchers](https://img.shields.io/github/watchers/brains-and-beards/animated-pin-input.svg?style=social&label=Watch)](https://github.com/brains-and-beards/animated-pin-input) [![GitHub followers](https://img.shields.io/github/followers/brains-and-beards.svg?style=social&label=Follow)](https://github.com/brains-and-beards/animated-pin-input)  
+[![Twitter Follow](https://img.shields.io/twitter/follow/brainsandbeards.svg?style=social)](https://twitter.com/brainsandbeards)
+
+## Author & support
+
+<img src="./logo.svg">
+
+[Brains and Beards](https://brainsandbeards.com/)
