@@ -1,7 +1,6 @@
 import React, { FC, useState, useCallback } from "react";
 import { Text, View, StyleSheet, Alert } from "react-native";
-// import AnimatedNumberInput from "animated-number-input";
-import AnimatedNumberInput from "../lib";
+import AnimatedNumberInput from "animated-number-input";
 
 const App: FC = () => {
   const [code, setCode] = useState<string>("");

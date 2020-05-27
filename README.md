@@ -29,6 +29,8 @@ Run example:
  pod install
  cd ..
  react-native run-ios
+```
+
 ## Example
 
 
