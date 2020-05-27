@@ -1,26 +1,16 @@
 import React, { FC, useCallback, useRef } from "react";
-import {
-  View,
-  TextInput,
-  TouchableOpacity,
-  NativeSyntheticEvent,
-  TextInputFocusEventData,
-  StyleSheet,
-} from "react-native";
+import { View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
 import InputSingleItem, { ICodeInputProps } from "./InputSingleItem";
-import InputField from "./InputField";
+import InputField, { IInputProps } from "./InputField";
 
-interface IProps extends ICodeInputProps {
+interface IProps extends ICodeInputProps, IInputProps {
   numberOfInputs: number;
-  code: string;
-  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
-  onChangeText?: (text: string) => void;
-  onSubmit: (codeValue: string) => void;
+  onSubmitCode: (codeValue: string) => void;
 }
 
 const AnimatedNumberInput: FC<IProps> = (props) => {
-  const { code, numberOfInputs, onBlur, onChangeText, onSubmit } = props;
+  const { code, numberOfInputs, onBlur, onChangeText, onSubmitCode } = props;
   const animatedNumberInputRef = useRef<TextInput>(null);
 
   const renderItem = useCallback(
@@ -43,9 +33,9 @@ const AnimatedNumberInput: FC<IProps> = (props) => {
     animatedNumberInputRef.current?.focus();
   }, [animatedNumberInputRef]);
 
-  const onCodeSubmit = useCallback(() => {
-    onSubmit(code);
-  }, [code, onSubmit]);
+  const onSubmit = useCallback(() => {
+    onSubmitCode(code);
+  }, [code, onSubmitCode]);
 
   return (
     <>
@@ -61,14 +51,14 @@ const AnimatedNumberInput: FC<IProps> = (props) => {
         </View>
       </TouchableOpacity>
       <InputField
-        textInputCode={animatedNumberInputRef}
-        autoFocus={true}
+        textInputRef={animatedNumberInputRef}
         onChangeText={onChangeText}
         onBlur={onBlur}
         codeMaxLength={numberOfInputs || 1}
-        codeValue={code}
-        testID={"Code_Input"}
-        onSubmit={onCodeSubmit}
+        code={code}
+        testID={"Animated_Code_Input"}
+        onSubmit={onSubmit}
+        {...props}
       />
     </>
   );

@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback } from 'react';
+import React, { FC, useState, useEffect, useCallback } from "react";
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   Animated,
   TextProps,
   Platform,
-} from 'react-native';
+} from "react-native";
 
 export interface ICodeInputProps {
   cursorAnimationDuration?: number;
@@ -25,17 +25,17 @@ export interface ICodeInputProps {
     inputFontSize?: number;
     borderRadius?: number;
     fontWeight?:
-      | 'normal'
-      | 'bold'
-      | '100'
-      | '200'
-      | '300'
-      | '400'
-      | '500'
-      | '600'
-      | '700'
-      | '800'
-      | '900';
+      | "normal"
+      | "bold"
+      | "100"
+      | "200"
+      | "300"
+      | "400"
+      | "500"
+      | "600"
+      | "700"
+      | "800"
+      | "900";
     customStyle?: StyleProp<ViewStyle>;
   };
   activeCodeContainerStyle?: {
@@ -46,17 +46,17 @@ export interface ICodeInputProps {
     inputFontSize?: number;
     borderRadius?: number;
     fontWeight?:
-      | 'normal'
-      | 'bold'
-      | '100'
-      | '200'
-      | '300'
-      | '400'
-      | '500'
-      | '600'
-      | '700'
-      | '800'
-      | '900';
+      | "normal"
+      | "bold"
+      | "100"
+      | "200"
+      | "300"
+      | "400"
+      | "500"
+      | "600"
+      | "700"
+      | "800"
+      | "900";
     customStyle?: StyleProp<ViewStyle>;
   };
   cursorStyle?: {
@@ -66,24 +66,24 @@ export interface ICodeInputProps {
     marginTop?: number;
     customStyle?: StyleProp<TextProps>;
   };
-  timeout?: number;
+  afterInputDelay?: number;
 }
 
-const DEFAULT_BACKGROUND_COLOR = '#F3F0F3';
+const DEFAULT_BACKGROUND_COLOR = "#F3F0F3";
 const NUMBER_ANIMATION_DURATION = 300;
 const CURSOR_ANIMATION_DURATION = 500;
-const DEFAULT_CURSOR_COLOR = '#4A72FF';
+const DEFAULT_CURSOR_COLOR = "#4A72FF";
 const DEFAULT_WIDTH = 55;
 const DEFAULT_HEIGHT = 70;
 const DEFAULT_FONT_SIZE = 30;
-const DEFAULT_FONT_WEIGHT = 'bold';
-const DEFAULT_TIMEOUT = 100;
-const DEFAULT_TEXT_COLOR = 'black';
+const DEFAULT_FONT_WEIGHT = "bold";
+const DEFAULT_AFTER_INPUT_DELAY = 100;
+const DEFAULT_TEXT_COLOR = "black";
 
 export const InputSingleItem: FC<ICodeInputProps> = (
   props: ICodeInputProps
 ) => {
-  const [textValue, setTextValue] = useState('');
+  const [textValue, setTextValue] = useState("");
   const [animatedValue, setAnimatedValue] = useState(new Animated.Value(0));
   const [animatedValueCursor, setAnimatedValueCursor] = useState(
     new Animated.Value(0)
@@ -98,7 +98,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
     cursorStyle,
     index,
     textColor,
-    timeout,
+    afterInputDelay,
   } = props;
 
   const start = useCallback(() => {
@@ -139,7 +139,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
   useEffect(() => {
     const currentIndex = index ? index : 0;
     const text =
-      code.length <= currentIndex ? '' : code.substr(currentIndex, 1);
+      code.length <= currentIndex ? "" : code.substr(currentIndex, 1);
     if (text.length < textValue.length) {
       resetAnimationAfterDelete();
     }
@@ -150,10 +150,17 @@ export const InputSingleItem: FC<ICodeInputProps> = (
         () => {
           start();
         },
-        timeout ? timeout : DEFAULT_TIMEOUT
+        afterInputDelay ? afterInputDelay : DEFAULT_AFTER_INPUT_DELAY
       );
     }
-  }, [code, index, timeout, start, textValue, resetAnimationAfterDelete]);
+  }, [
+    code,
+    index,
+    afterInputDelay,
+    start,
+    textValue,
+    resetAnimationAfterDelete,
+  ]);
 
   useEffect(() => {
     if (textValue.length === 0) {
@@ -161,10 +168,10 @@ export const InputSingleItem: FC<ICodeInputProps> = (
         () => {
           startCursor();
         },
-        timeout ? timeout : DEFAULT_TIMEOUT
+        afterInputDelay ? afterInputDelay : DEFAULT_AFTER_INPUT_DELAY
       );
     }
-  }, [textValue, timeout, startCursor]);
+  }, [textValue, afterInputDelay, startCursor]);
 
   return (
     <View
@@ -211,7 +218,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
           }}
         >
           <Text style={[styles.cursor, cursorStyle, cursorStyle?.customStyle]}>
-            {'|'}
+            {"|"}
           </Text>
         </Animated.View>
       )}
@@ -221,8 +228,8 @@ export const InputSingleItem: FC<ICodeInputProps> = (
 
 const styles = StyleSheet.create({
   codeContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
     borderWidth: 1,

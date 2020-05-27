@@ -7,6 +7,7 @@ import {
   StyleProp,
   Animated,
   TextProps,
+  Platform,
 } from "react-native";
 
 export interface ICodeInputProps {
@@ -65,7 +66,7 @@ export interface ICodeInputProps {
     marginTop?: number;
     customStyle?: StyleProp<TextProps>;
   };
-  timeout?: number;
+  afterInputDelay?: number;
 }
 
 const DEFAULT_BACKGROUND_COLOR = "#F3F0F3";
@@ -76,7 +77,7 @@ const DEFAULT_WIDTH = 55;
 const DEFAULT_HEIGHT = 70;
 const DEFAULT_FONT_SIZE = 30;
 const DEFAULT_FONT_WEIGHT = "bold";
-const DEFAULT_TIMEOUT = 100;
+const DEFAULT_AFTER_INPUT_DELAY = 100;
 const DEFAULT_TEXT_COLOR = "black";
 
 export const InputSingleItem: FC<ICodeInputProps> = (
@@ -97,7 +98,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
     cursorStyle,
     index,
     textColor,
-    timeout,
+    afterInputDelay,
   } = props;
 
   const start = useCallback(() => {
@@ -149,10 +150,17 @@ export const InputSingleItem: FC<ICodeInputProps> = (
         () => {
           start();
         },
-        timeout ? timeout : DEFAULT_TIMEOUT
+        afterInputDelay ? afterInputDelay : DEFAULT_AFTER_INPUT_DELAY
       );
     }
-  }, [code, index, timeout, start, textValue, resetAnimationAfterDelete]);
+  }, [
+    code,
+    index,
+    afterInputDelay,
+    start,
+    textValue,
+    resetAnimationAfterDelete,
+  ]);
 
   useEffect(() => {
     if (textValue.length === 0) {
@@ -160,10 +168,10 @@ export const InputSingleItem: FC<ICodeInputProps> = (
         () => {
           startCursor();
         },
-        timeout ? timeout : DEFAULT_TIMEOUT
+        afterInputDelay ? afterInputDelay : DEFAULT_AFTER_INPUT_DELAY
       );
     }
-  }, [textValue, timeout, startCursor]);
+  }, [textValue, afterInputDelay, startCursor]);
 
   return (
     <View
@@ -234,7 +242,10 @@ const styles = StyleSheet.create({
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
     marginLeft: 20,
-    marginTop: 10,
+    marginTop: Platform.select({
+      ios: 10,
+      android: -20,
+    }),
     color: DEFAULT_CURSOR_COLOR,
   },
 });

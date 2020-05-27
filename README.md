@@ -4,12 +4,20 @@ A React Native component for animated code input for iOS, Android and React Nati
 
 ## Demo
 
+Android: 
+
+![](android.gif)
+
+iOS:
+
+![](ios.gif)
+
 ## Getting started
 
 ```
-npm 
+npm install
 
-yarn
+yarn add
 ```
 
 Run example:
@@ -47,11 +55,9 @@ const App: FC = () => {
       <View style={styles.container}>
         <AnimatedNumberInput
           code={code}
-          numberOfInputs={6}
-          onBlur={onBlur}
+          numberOfInputs={5}
           onChangeText={onChangeText}
-          textInputCodeRef={textInputCode}
-          onSubmit={onSubmit}
+          onSubmitCode={onSubmit}
         />
       </View>
     </>
@@ -73,14 +79,17 @@ Properties for this component:
 | Prop                          | Type         | Default | Description                                                 |
 | ----------------------------- | ------------ | ------- | ----------------------------------------------------------- |
 | `cursorAnimationDuration`     | number       | 500     | cursor animation duration                                   |
-| `codeAnimationDuration`       | number       | 500     | code animation duration container                           |
+| `codeAnimationDuration`       | number       | 300     | code animation duration container                           |
 | `code` (**Required**)         | string       | ''      | code string                                                 |
 | `index`                       | number       | 0       | active code input                                           |
 | `codeContainerStyle`          | style object | {}      | custom input style                                          |
 | `activeCodeContainerStyle`    | style object | {}      | custom active input style                                   |
 | `cursorStyle`                 | style object | {}      | custom cursor style                                         |
-| `timeout`                     | number       | 100     | timeout after something is type in input                    |
+| `afterInputDelay`             | number       | 100     | timeout after something is type in an input                 |
+| `textColor`                   | string       | black   | input text color                                            |
+| `autoFocus`                   | boolean      | true    | input text color                                            |
 | `numberOfInputs`              | number       | 1       | number of code inputs                                       |
-| `onBlur`                      | function     | void    | callback that is called when the text input is blurred.     |
+| `textContentType`             | string       | 'oneTimeCode'  | give the keyboard and the system information about the expected semantic meaning for the content that users enter.  |
+| `onBlur`                      | function     | void    | callback that is called when the text input loses focus.    |
 | `onChangeText` (**Required**) | function     | void    | callback that is called when the text input's text changes. |
 | `onSubmit` (**Required**)     | function     | void    | callback function called when every code input has a value  |
