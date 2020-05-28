@@ -25,7 +25,7 @@ Run example:
  cd ios
  pod install
  cd ..
- react-native run-ios
+ yarn react-native run-ios
 ```
 
 ## Example
@@ -88,7 +88,7 @@ Properties for this component:
 | `codeContainerStyle`          | style object | {}      | custom input style                                          |
 | `activeCodeContainerStyle`    | style object | {}      | custom active input style                                   |
 | `cursorStyle`                 | style object | {}      | custom cursor style                                         |
-| `afterInputDelay`             | number       | 100     | timeout after something is type in an input                 |
+| `afterInputDelay`             | number       | 50     | timeout after something is type in an input                 |
 | `textColor`                   | string       | black   | input text color                                            |
 | `autoFocus`                   | boolean      | true    | input text color                                            |
 | `numberOfInputs`              | number       | 1       | number of code inputs                                       |

@@ -26,10 +26,6 @@ const AnimatedNumberInput: FC<IProps> = (props) => {
   );
 
   const onPressCode = useCallback(() => {
-    if (animatedNumberInputRef === null) {
-      return;
-    }
-
     animatedNumberInputRef.current?.focus();
   }, [animatedNumberInputRef]);
 

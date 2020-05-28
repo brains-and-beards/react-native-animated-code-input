@@ -77,7 +77,7 @@ const DEFAULT_WIDTH = 55;
 const DEFAULT_HEIGHT = 70;
 const DEFAULT_FONT_SIZE = 30;
 const DEFAULT_FONT_WEIGHT = "bold";
-const DEFAULT_AFTER_INPUT_DELAY = 100;
+const DEFAULT_AFTER_INPUT_DELAY = 50;
 const DEFAULT_TEXT_COLOR = "black";
 
 export const InputSingleItem: FC<ICodeInputProps> = (
