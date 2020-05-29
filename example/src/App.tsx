@@ -109,7 +109,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
-    paddingTop: 0,
+    paddingTop: Platform.select({
+      android: 0,
+      ios: 50,
+    }),
     backgroundColor: "white",
   },
   simplyCustomCodeContainer: {
@@ -160,7 +163,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 35,
     textAlign: "center",
-    marginBottom: 20,
+    marginBottom: Platform.select({
+      android: 20,
+      ios: 50,
+    }),
   },
 });
 
