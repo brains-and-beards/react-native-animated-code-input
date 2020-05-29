@@ -1,9 +1,14 @@
-import React, { FC, useState, useCallback } from "react";
-import { Text, View, StyleSheet, Alert } from "react-native";
+import React, { FC, useState, useCallback, useEffect } from "react";
+import { Text, View, StyleSheet, Alert, Platform } from "react-native";
 import AnimatedNumberInput from "animated-number-input";
+import Clipboard from "@react-native-community/clipboard";
+
+const NON_NUMBER_REGEX = /[^0-9]/g;
+const NUMBER_OF_INPUTS = 5;
 
 const App: FC = () => {
   const [code, setCode] = useState<string>("");
+  let intervalId: NodeJS.Timeout;
 
   const onChangeText = useCallback((text: string) => {
     setCode(text);
@@ -18,6 +23,27 @@ const App: FC = () => {
     );
   }, []);
 
+  const readFromClipboard = useCallback(async () => {
+    const clipboardContent = await Clipboard.getString();
+    const value = clipboardContent.replace(NON_NUMBER_REGEX, "");
+    if (value.length === NUMBER_OF_INPUTS) {
+      setCode(value);
+      onSubmit(value);
+      await Clipboard.setString("");
+      clearInterval(intervalId);
+    }
+  }, []);
+
+  // To handle sms code after click "Copy "NUMBER"" ("Copy "12345"") option on Android
+  useEffect(() => {
+    if (Platform.OS === "android") {
+      intervalId = setInterval(() => readFromClipboard(), 1000);
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
+  }, []); // if you want to observe code all the time, replace [] with [code]
+
   return (
     <>
       <View style={styles.container}>
@@ -25,7 +51,7 @@ const App: FC = () => {
 
         <AnimatedNumberInput
           code={code}
-          numberOfInputs={5}
+          numberOfInputs={NUMBER_OF_INPUTS}
           onChangeText={onChangeText}
           onSubmitCode={onSubmit}
           textColor={"black"}
@@ -40,7 +66,7 @@ const App: FC = () => {
 
         <AnimatedNumberInput
           code={code}
-          numberOfInputs={5}
+          numberOfInputs={NUMBER_OF_INPUTS}
           onChangeText={onChangeText}
           onSubmitCode={onSubmit}
         />
@@ -49,7 +75,7 @@ const App: FC = () => {
 
         <AnimatedNumberInput
           code={code}
-          numberOfInputs={5}
+          numberOfInputs={NUMBER_OF_INPUTS}
           onChangeText={onChangeText}
           onSubmitCode={onSubmit}
           textColor={"white"}
@@ -64,7 +90,7 @@ const App: FC = () => {
 
         <AnimatedNumberInput
           code={code}
-          numberOfInputs={5}
+          numberOfInputs={NUMBER_OF_INPUTS}
           onChangeText={onChangeText}
           onSubmitCode={onSubmit}
           textColor={"black"}
@@ -82,8 +108,9 @@ const App: FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    backgroundColor: "#f3f1dd",
+    justifyContent: "flex-start",
+    paddingTop: 0,
+    backgroundColor: "white",
   },
   simplyCustomCodeContainer: {
     backgroundColor: "#ffde1a",
@@ -133,7 +160,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 35,
     textAlign: "center",
-    marginBottom: 50,
+    marginBottom: 20,
   },
 });
 

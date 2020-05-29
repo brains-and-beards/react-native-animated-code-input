@@ -9,6 +9,12 @@ Android            |  iOS
 ![](android.gif)           |  ![](ios.gif)
 
 
+Automatically fill in SMS passcodes on iOS. On Android the user must tap the Copy button in the notification popup.
+
+Android            |  iOS
+:-------------------------:|:-------------------------:
+![](android_sms.gif)           |  ![](ios_sms.gif)
+
 ## Getting started
 
 ```
