@@ -1,4 +1,4 @@
-import React, {FC, useCallback} from 'react';
+import React, { FC, useCallback } from "react";
 import {
   TextInput,
   NativeSyntheticEvent,
@@ -6,72 +6,107 @@ import {
   Keyboard,
   InteractionManager,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
 
-interface IProps {
+export interface IInputProps {
   autoFocus?: boolean;
-  codeMaxLength: number;
-  codeValue?: string;
-  onBlur: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
-  onChangeText: (text: string) => void;
-  onSubmit: () => void;
-  textContentType?: string;
-  testID?: string;
-  textInputCode: React.RefObject<TextInput>;
+  code: string;
+  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
+  onChangeText?: (text: string) => void;
+  onSubmit?: () => void;
+  textContentType?:
+    | "none"
+    | "URL"
+    | "addressCity"
+    | "addressCityAndState"
+    | "addressState"
+    | "countryName"
+    | "creditCardNumber"
+    | "emailAddress"
+    | "familyName"
+    | "fullStreetAddress"
+    | "givenName"
+    | "jobTitle"
+    | "location"
+    | "middleName"
+    | "name"
+    | "namePrefix"
+    | "nameSuffix"
+    | "nickname"
+    | "organizationName"
+    | "postalCode"
+    | "streetAddressLine1"
+    | "streetAddressLine2"
+    | "sublocality"
+    | "telephoneNumber"
+    | "username"
+    | "password";
 }
 
-const NUMBER_REGEX = /[^0-9]/g;
+interface IProps extends IInputProps {
+  codeMaxLength: number;
+  testID?: string;
+  textInputRef: React.RefObject<TextInput>;
+}
+
+const NON_NUMBER_REGEX = /[^0-9]/g;
 
 const InputField: FC<IProps> = (props) => {
   const {
     autoFocus,
     codeMaxLength,
-    codeValue,
+    code,
     onBlur,
     onChangeText,
     onSubmit,
     testID,
     textContentType,
-    textInputCode,
+    textInputRef,
   } = props;
 
   const onChangeTextCallback = useCallback(
     (text: string) => {
-      const value = text.replace(NUMBER_REGEX, '');
-      const codeChanged = value !== codeValue;
-      onChangeText(value);
+      const value = text.replace(NON_NUMBER_REGEX, "");
+      const codeChanged = value !== code;
+      if (onChangeText) {
+        onChangeText(value);
+      }
       if (codeChanged) {
         if (value.length === codeMaxLength) {
           Keyboard.dismiss();
         }
       }
     },
-    [codeMaxLength, codeValue, onChangeText],
+    [codeMaxLength, code, onChangeText]
   );
 
   const onBlurCallback = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
       InteractionManager.runAfterInteractions(() => {
-        onSubmit();
+        if (onSubmit && code.length === codeMaxLength) {
+          onSubmit();
+        }
       });
-      onBlur(e);
+      if (onBlur) {
+        onBlur(e);
+      }
     },
-    [onSubmit, onBlur],
+    [onSubmit, onBlur]
   );
 
   return (
     <TextInput
-      autoFocus={autoFocus}
+      autoFocus={autoFocus || true}
       caretHidden={true}
       keyboardType="number-pad"
       onBlur={onBlurCallback}
       onChangeText={onChangeTextCallback}
       maxLength={codeMaxLength}
-      ref={textInputCode}
+      ref={textInputRef}
       style={styles.input}
       testID={testID}
-      textContentType={textContentType ? 'oneTimeCode' : undefined}
-      value={codeValue}
+      textContentType={textContentType ? textContentType : "oneTimeCode"}
+      value={code}
     />
   );
 };

@@ -1,12 +1,21 @@
-import React, {FC, useState, useEffect, useCallback} from 'react';
-import {View, Text, ViewStyle, StyleSheet, StyleProp, Animated, TextProps} from 'react-native';
+import React, { FC, useState, useEffect, useCallback } from "react";
+import {
+  View,
+  Text,
+  ViewStyle,
+  StyleSheet,
+  StyleProp,
+  Animated,
+  TextProps,
+  Platform,
+} from "react-native";
 
 export interface ICodeInputProps {
   cursorAnimationDuration?: number;
   codeAnimationDuration?: number;
   code: string;
   index?: number;
-  selectedInputBigger?: boolean;
+  textColor?: string;
   // style props
   codeContainerStyle?: {
     backgroundColor?: string;
@@ -15,7 +24,18 @@ export interface ICodeInputProps {
     codeHeight?: number;
     inputFontSize?: number;
     borderRadius?: number;
-    fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+    fontWeight?:
+      | "normal"
+      | "bold"
+      | "100"
+      | "200"
+      | "300"
+      | "400"
+      | "500"
+      | "600"
+      | "700"
+      | "800"
+      | "900";
     customStyle?: StyleProp<ViewStyle>;
   };
   activeCodeContainerStyle?: {
@@ -25,7 +45,18 @@ export interface ICodeInputProps {
     codeHeight?: number;
     inputFontSize?: number;
     borderRadius?: number;
-    fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+    fontWeight?:
+      | "normal"
+      | "bold"
+      | "100"
+      | "200"
+      | "300"
+      | "400"
+      | "500"
+      | "600"
+      | "700"
+      | "800"
+      | "900";
     customStyle?: StyleProp<ViewStyle>;
   };
   cursorStyle?: {
@@ -35,23 +66,28 @@ export interface ICodeInputProps {
     marginTop?: number;
     customStyle?: StyleProp<TextProps>;
   };
-  timeout?: number;
+  afterInputDelay?: number;
 }
 
-const DEFAULT_BACKGROUND_COLOR = '#F3F0F3';
+const DEFAULT_BACKGROUND_COLOR = "#F3F0F3";
 const NUMBER_ANIMATION_DURATION = 300;
 const CURSOR_ANIMATION_DURATION = 500;
-const DEFAULT_CURSOR_COLOR = '#4A72FF';
+const DEFAULT_CURSOR_COLOR = "#4A72FF";
 const DEFAULT_WIDTH = 55;
 const DEFAULT_HEIGHT = 70;
 const DEFAULT_FONT_SIZE = 30;
-const DEFAULT_FONT_WEIGHT = 'bold';
-const DEFAULT_TIMEOUT = 100;
+const DEFAULT_FONT_WEIGHT = "bold";
+const DEFAULT_AFTER_INPUT_DELAY = 50;
+const DEFAULT_TEXT_COLOR = "black";
 
-export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => {
-  const [textValue, setTextValue] = useState('');
+export const InputSingleItem: FC<ICodeInputProps> = (
+  props: ICodeInputProps
+) => {
+  const [textValue, setTextValue] = useState("");
   const [animatedValue, setAnimatedValue] = useState(new Animated.Value(0));
-  const [animatedValueCursor, setAnimatedValueCursor] = useState(new Animated.Value(0));
+  const [animatedValueCursor, setAnimatedValueCursor] = useState(
+    new Animated.Value(0)
+  );
 
   const {
     activeCodeContainerStyle,
@@ -61,13 +97,16 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
     cursorAnimationDuration,
     cursorStyle,
     index,
-    timeout,
+    textColor,
+    afterInputDelay,
   } = props;
 
   const start = useCallback(() => {
     Animated.timing(animatedValue, {
       toValue: 1,
-      duration: codeAnimationDuration ? codeAnimationDuration : NUMBER_ANIMATION_DURATION,
+      duration: codeAnimationDuration
+        ? codeAnimationDuration
+        : NUMBER_ANIMATION_DURATION,
       useNativeDriver: true,
     }).start();
   }, [animatedValue, codeAnimationDuration]);
@@ -75,12 +114,16 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
   const startCursor = useCallback(() => {
     Animated.timing(animatedValueCursor, {
       toValue: 1,
-      duration: cursorAnimationDuration ? cursorAnimationDuration : CURSOR_ANIMATION_DURATION,
+      duration: cursorAnimationDuration
+        ? cursorAnimationDuration
+        : CURSOR_ANIMATION_DURATION,
       useNativeDriver: true,
     }).start(() => {
       Animated.timing(animatedValueCursor, {
         toValue: 0,
-        duration: cursorAnimationDuration ? cursorAnimationDuration : CURSOR_ANIMATION_DURATION,
+        duration: cursorAnimationDuration
+          ? cursorAnimationDuration
+          : CURSOR_ANIMATION_DURATION,
         useNativeDriver: true,
       }).start(() => {
         startCursor();
@@ -95,7 +138,8 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
 
   useEffect(() => {
     const currentIndex = index ? index : 0;
-    const text = code.length <= currentIndex ? '' : code.substr(currentIndex, 1);
+    const text =
+      code.length <= currentIndex ? "" : code.substr(currentIndex, 1);
     if (text.length < textValue.length) {
       resetAnimationAfterDelete();
     }
@@ -106,10 +150,17 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
         () => {
           start();
         },
-        timeout ? timeout : DEFAULT_TIMEOUT,
+        afterInputDelay ? afterInputDelay : DEFAULT_AFTER_INPUT_DELAY
       );
     }
-  }, [code, index, timeout, start, textValue, resetAnimationAfterDelete]);
+  }, [
+    code,
+    index,
+    afterInputDelay,
+    start,
+    textValue,
+    resetAnimationAfterDelete,
+  ]);
 
   useEffect(() => {
     if (textValue.length === 0) {
@@ -117,30 +168,46 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
         () => {
           startCursor();
         },
-        timeout ? timeout : DEFAULT_TIMEOUT,
+        afterInputDelay ? afterInputDelay : DEFAULT_AFTER_INPUT_DELAY
       );
     }
-  }, [textValue, timeout, startCursor]);
+  }, [textValue, afterInputDelay, startCursor]);
 
   return (
     <View
       style={
         code.length === index
-          ? [styles.codeContainer, activeCodeContainerStyle, activeCodeContainerStyle?.customStyle]
-          : [styles.codeContainer, codeContainerStyle, codeContainerStyle?.customStyle]
+          ? [
+              styles.codeContainer,
+              activeCodeContainerStyle,
+              activeCodeContainerStyle?.customStyle,
+            ]
+          : [
+              styles.codeContainer,
+              codeContainerStyle,
+              codeContainerStyle?.customStyle,
+            ]
       }
-      key={`code-field ${index ? index : 0}`}>
+      key={`code-field ${index ? index : 0}`}
+    >
       <Animated.View
         style={{
           opacity: animatedValue,
-        }}>
+        }}
+      >
         <Text
           style={[
             {
-              fontSize: codeContainerStyle?.inputFontSize ? codeContainerStyle?.inputFontSize : DEFAULT_FONT_SIZE,
-              fontWeight: codeContainerStyle?.fontWeight ? codeContainerStyle?.fontWeight : DEFAULT_FONT_WEIGHT,
+              fontSize: codeContainerStyle?.inputFontSize
+                ? codeContainerStyle?.inputFontSize
+                : DEFAULT_FONT_SIZE,
+              fontWeight: codeContainerStyle?.fontWeight
+                ? codeContainerStyle?.fontWeight
+                : DEFAULT_FONT_WEIGHT,
+              color: textColor ? textColor : DEFAULT_TEXT_COLOR,
             },
-          ]}>
+          ]}
+        >
           {textValue}
         </Text>
       </Animated.View>
@@ -148,8 +215,11 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
         <Animated.View
           style={{
             opacity: animatedValueCursor,
-          }}>
-          <Text style={[styles.cursor, cursorStyle, cursorStyle?.customStyle]}>{'|'}</Text>
+          }}
+        >
+          <Text style={[styles.cursor, cursorStyle, cursorStyle?.customStyle]}>
+            {"|"}
+          </Text>
         </Animated.View>
       )}
     </View>
@@ -158,8 +228,8 @@ export const InputSingleItem: FC<ICodeInputProps> = (props: ICodeInputProps) => 
 
 const styles = StyleSheet.create({
   codeContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
     borderWidth: 1,
@@ -172,7 +242,10 @@ const styles = StyleSheet.create({
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
     marginLeft: 20,
-    marginTop: 10,
+    marginTop: Platform.select({
+      ios: 10,
+      android: -20,
+    }),
     color: DEFAULT_CURSOR_COLOR,
   },
 });

@@ -1,6 +1,16 @@
 module.exports = {
   root: true,
-  extends: '@react-native-community',
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint", "eslint-plugin-prettier"],
+  extends: ["eslint-config-prettier"],
+  rules: {
+    "prettier/prettier": "error",
+  },
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
 };

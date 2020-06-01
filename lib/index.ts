@@ -1,1 +1,1 @@
-export {default} from './AnimatedNumberInput';
+export { default } from "./AnimatedNumberInput";
