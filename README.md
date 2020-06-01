@@ -48,12 +48,12 @@ yarn add react-native-animated-code-input
 ## Simple Example
 
 ```js
-import React, { FC, useRef, useState, useCallback } from 'react';
-import { TextInput, View, StyleSheet } from 'react-native';
-import AnimatedNumberInput from 'animated-number-input';
+import React, { FC, useRef, useState, useCallback } from "react";
+import { TextInput, View, StyleSheet } from "react-native";
+import AnimatedNumberInput from "animated-number-input";
 
 const App: FC = () => {
-  const [code, setCode] = useState < string > '';
+  const [code, setCode] = useState < string > "";
 
   const onChangeText = useCallback((text: string) => {
     setCode(text);
@@ -61,9 +61,9 @@ const App: FC = () => {
 
   const onSubmit = useCallback((codeValue: string) => {
     Alert.alert(
-      'DONE',
+      "DONE",
       codeValue,
-      [{ text: 'OK', onPress: () => setCode('') }],
+      [{ text: "OK", onPress: () => setCode("") }],
       { cancelable: false }
     );
   }, []);
@@ -85,7 +85,7 @@ const App: FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });
 ```
