@@ -1,5 +1,5 @@
 {
-  "name": "react-native-brainily-input",
+  "name": "animated-number-input",
   "author": "Brains and Beards",
   "version": "1.0.0",
   "description": "A react-native component which is an input for confirmation code for Android, iOS and React Native Web",
