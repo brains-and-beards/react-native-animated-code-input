@@ -9,9 +9,9 @@ interface IProps extends ICodeInputProps, IInputProps {
   onSubmitCode: (codeValue: string) => void;
 }
 
-const AnimatedNumberInput: FC<IProps> = (props) => {
+const AnimatedCodeInput: FC<IProps> = (props) => {
   const { code, numberOfInputs, onBlur, onChangeText, onSubmitCode } = props;
-  const animatedNumberInputRef = useRef<TextInput>(null);
+  const animatedCodeInputRef = useRef<TextInput>(null);
 
   const renderItem = useCallback(
     (index: number) => (
@@ -26,8 +26,8 @@ const AnimatedNumberInput: FC<IProps> = (props) => {
   );
 
   const onPressCode = useCallback(() => {
-    animatedNumberInputRef.current?.focus();
-  }, [animatedNumberInputRef]);
+    animatedCodeInputRef.current?.focus();
+  }, [animatedCodeInputRef]);
 
   const onSubmit = useCallback(() => {
     onSubmitCode(code);
@@ -47,7 +47,7 @@ const AnimatedNumberInput: FC<IProps> = (props) => {
         </View>
       </TouchableOpacity>
       <InputField
-        textInputRef={animatedNumberInputRef}
+        textInputRef={animatedCodeInputRef}
         onChangeText={onChangeText}
         onBlur={onBlur}
         codeMaxLength={numberOfInputs || 1}
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   items: { alignItems: "stretch" },
 });
 
-export default AnimatedNumberInput;
+export default AnimatedCodeInput;

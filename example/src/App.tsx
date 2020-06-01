@@ -8,7 +8,7 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
-import AnimatedNumberInput from "animated-number-input";
+import AnimatedCodeInput from "react-native-animated-code-input";
 import Clipboard from "@react-native-community/clipboard";
 
 const NON_NUMBER_REGEX = /[^0-9]/g;
@@ -67,7 +67,7 @@ const App: FC = () => {
           </Text>
 
           <View>
-            <AnimatedNumberInput
+            <AnimatedCodeInput
               code={code}
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
@@ -84,7 +84,7 @@ const App: FC = () => {
 
             <View style={{ margin: 10 }} />
 
-            <AnimatedNumberInput
+            <AnimatedCodeInput
               code={code}
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
@@ -93,7 +93,7 @@ const App: FC = () => {
 
             <View style={{ margin: 10 }} />
 
-            <AnimatedNumberInput
+            <AnimatedCodeInput
               code={code}
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
@@ -108,7 +108,7 @@ const App: FC = () => {
 
             <View style={{ margin: 10 }} />
 
-            <AnimatedNumberInput
+            <AnimatedCodeInput
               code={code}
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
