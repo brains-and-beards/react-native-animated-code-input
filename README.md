@@ -11,9 +11,9 @@ A React Native component for animated code input for iOS, Android and React Nati
 
 Automatically fill in SMS passcodes on iOS. On Android the user must tap the Copy button in the notification popup.
 
-|       Android        |       iOS        |
-| :------------------: | :--------------: |
-| ![](android_sms.gif) | ![](ios_sms.gif) |
+|                                                             Android                                                             |                                                         iOS                                                         |
+| :-----------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: |
+| ![react-native-animated-code-input android sms autofill demo](assets/react-native-animated-code-input-android-autofill-sms.gif) | ![react-native-animated-code-input ios autofill demo](assets/react-native-animated-code-input-ios-autofill-sms.gif) |
 
 ## Getting started
 
