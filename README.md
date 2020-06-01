@@ -8,7 +8,6 @@ A React Native component for animated code input for iOS, Android and React Nati
 | :---------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
 | ![react-native-animated-code-input android demo](assets/react-native-animated-code-input-android.gif) | ![react-native-animated-code-input ios demo](assets/react-native-animated-code-input-ios.gif) |
 
-
 Automatically fill in SMS passcodes on iOS. On Android the user must tap the Copy button in the notification popup.
 
 |                                                             Android                                                             |                                                         iOS                                                         |
@@ -17,7 +16,7 @@ Automatically fill in SMS passcodes on iOS. On Android the user must tap the Cop
 
 ## Getting started
 
-```
+```bash
 npm install
 
 yarn add
@@ -25,7 +24,7 @@ yarn add
 
 Run example:
 
-```
+```bash
  cd example
  yarn install
  cd ios
@@ -36,15 +35,14 @@ Run example:
 
 ## Example
 
-
 ```js
-import React, {FC, useRef, useState, useCallback} from 'react';
-import {TextInput, View, StyleSheet} from 'react-native';
-import AnimatedNumberInput from 'animated-number-input';
+import React, { FC, useRef, useState, useCallback } from "react";
+import { TextInput, View, StyleSheet } from "react-native";
+import AnimatedNumberInput from "animated-number-input";
 
 const App: FC = () => {
-  const [code, setCode] = useState<string>("");
-  
+  const [code, setCode] = useState < string > "";
+
   const onChangeText = useCallback((text: string) => {
     setCode(text);
   }, []);
@@ -57,7 +55,6 @@ const App: FC = () => {
       { cancelable: false }
     );
   }, []);
-
 
   return (
     <>
@@ -76,14 +73,14 @@ const App: FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });
 ```
 
 ## Attributes
 
-Properties for this component:  
+Properties for this component:
 
 | Prop                          | Type         | Default       | Description                                                                                                        |
 | ----------------------------- | ------------ | ------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -103,7 +100,6 @@ Properties for this component:
 | `onChangeText` (**Required**) | function     | void          | callback that is called when the text input's text changes.                                                        |
 | `onSubmit` (**Required**)     | function     | void          | callback function called when every code input has a value                                                         |
 
-
 ## Made with 💛 at Brains and Beards
 
 Show some 💛 and star the repo to support the project
@@ -113,6 +109,6 @@ Show some 💛 and star the repo to support the project
 
 ## Author & support
 
-<img src="./logo.svg">
+![Brains & Beards Logo](./assets/logo.svg)
 
 [Brains and Beards](https://brainsandbeards.com/)
