@@ -50,7 +50,7 @@ yarn add react-native-animated-code-input
 ```js
 import React, { FC, useRef, useState, useCallback } from "react";
 import { TextInput, View, StyleSheet } from "react-native";
-import AnimatedNumberInput from "animated-number-input";
+import AnimatedCodeInput from "react-native-animated-code-input";
 
 const App: FC = () => {
   const [code, setCode] = useState < string > "";
@@ -71,7 +71,7 @@ const App: FC = () => {
   return (
     <>
       <View style={styles.container}>
-        <AnimatedNumberInput
+        <AnimatedCodeInput
           code={code}
           numberOfInputs={5}
           onChangeText={onChangeText}
