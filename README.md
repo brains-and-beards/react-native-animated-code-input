@@ -1,6 +1,10 @@
-# Animated Number Input
+# Animated Code Input
 
-A React Native component for animated code input for iOS, Android and React Native Web.
+## Description
+
+An animated code input component for React Native. Support for iOS, Android and React Native Web. This is a fully customizable component that allows the developer to write custom styles for the cursor, a single cell, and input focus. The module is also able to handle autofill after receiving a SMS message.
+
+**Support: RN >=0.59.0**
 
 ## Demo
 
@@ -16,13 +20,21 @@ Automatically fill in SMS passcodes on iOS. On Android the user must tap the Cop
 
 ## Getting started
 
-```bash
-npm install
+### Installation
 
-yarn add
+Install the package with npm.
+
+```bash
+npm install react-native-animated-code-input
 ```
 
-Run example:
+or with yarn
+
+```bash
+yarn add react-native-animated-code-input
+```
+
+### Run example
 
 ```bash
  cd example
@@ -33,15 +45,15 @@ Run example:
  yarn react-native run-ios
 ```
 
-## Example
+## Simple Example
 
 ```js
-import React, { FC, useRef, useState, useCallback } from "react";
-import { TextInput, View, StyleSheet } from "react-native";
-import AnimatedNumberInput from "animated-number-input";
+import React, { FC, useRef, useState, useCallback } from 'react';
+import { TextInput, View, StyleSheet } from 'react-native';
+import AnimatedNumberInput from 'animated-number-input';
 
 const App: FC = () => {
-  const [code, setCode] = useState < string > "";
+  const [code, setCode] = useState < string > '';
 
   const onChangeText = useCallback((text: string) => {
     setCode(text);
@@ -49,9 +61,9 @@ const App: FC = () => {
 
   const onSubmit = useCallback((codeValue: string) => {
     Alert.alert(
-      "DONE",
+      'DONE',
       codeValue,
-      [{ text: "OK", onPress: () => setCode("") }],
+      [{ text: 'OK', onPress: () => setCode('') }],
       { cancelable: false }
     );
   }, []);
@@ -73,7 +85,7 @@ const App: FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 });
 ```
