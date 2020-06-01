@@ -4,16 +4,16 @@ A React Native component for animated code input for iOS, Android and React Nati
 
 ## Demo
 
-Android            |  iOS
-:-------------------------:|:-------------------------:
-![](android.gif)           |  ![](ios.gif)
+|                                                Android                                                |                                              iOS                                              |
+| :---------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
+| ![react-native-animated-code-input android demo](assets/react-native-animated-code-input-android.gif) | ![react-native-animated-code-input ios demo](assets/react-native-animated-code-input-ios.gif) |
 
 
 Automatically fill in SMS passcodes on iOS. On Android the user must tap the Copy button in the notification popup.
 
-Android            |  iOS
-:-------------------------:|:-------------------------:
-![](android_sms.gif)           |  ![](ios_sms.gif)
+|       Android        |       iOS        |
+| :------------------: | :--------------: |
+| ![](android_sms.gif) | ![](ios_sms.gif) |
 
 ## Getting started
 
@@ -85,23 +85,23 @@ const styles = StyleSheet.create({
 
 Properties for this component:  
 
-| Prop                          | Type         | Default | Description                                                 |
-| ----------------------------- | ------------ | ------- | ----------------------------------------------------------- |
-| `cursorAnimationDuration`     | number       | 500     | cursor animation duration                                   |
-| `codeAnimationDuration`       | number       | 300     | code animation duration container                           |
-| `code` (**Required**)         | string       | ''      | code string                                                 |
-| `index`                       | number       | 0       | active code input                                           |
-| `codeContainerStyle`          | style object | {}      | custom input style                                          |
-| `activeCodeContainerStyle`    | style object | {}      | custom active input style                                   |
-| `cursorStyle`                 | style object | {}      | custom cursor style                                         |
-| `afterInputDelay`             | number       | 50     | timeout after something is type in an input                 |
-| `textColor`                   | string       | black   | input text color                                            |
-| `autoFocus`                   | boolean      | true    | input text color                                            |
-| `numberOfInputs`              | number       | 1       | number of code inputs                                       |
-| `textContentType`             | string       | 'oneTimeCode'  | give the keyboard and the system information about the expected semantic meaning for the content that users enter.  |
-| `onBlur`                      | function     | void    | callback that is called when the text input loses focus.    |
-| `onChangeText` (**Required**) | function     | void    | callback that is called when the text input's text changes. |
-| `onSubmit` (**Required**)     | function     | void    | callback function called when every code input has a value  |
+| Prop                          | Type         | Default       | Description                                                                                                        |
+| ----------------------------- | ------------ | ------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `cursorAnimationDuration`     | number       | 500           | cursor animation duration                                                                                          |
+| `codeAnimationDuration`       | number       | 300           | code animation duration container                                                                                  |
+| `code` (**Required**)         | string       | ''            | code string                                                                                                        |
+| `index`                       | number       | 0             | active code input                                                                                                  |
+| `codeContainerStyle`          | style object | {}            | custom input style                                                                                                 |
+| `activeCodeContainerStyle`    | style object | {}            | custom active input style                                                                                          |
+| `cursorStyle`                 | style object | {}            | custom cursor style                                                                                                |
+| `afterInputDelay`             | number       | 50            | timeout after something is type in an input                                                                        |
+| `textColor`                   | string       | black         | input text color                                                                                                   |
+| `autoFocus`                   | boolean      | true          | input text color                                                                                                   |
+| `numberOfInputs`              | number       | 1             | number of code inputs                                                                                              |
+| `textContentType`             | string       | 'oneTimeCode' | give the keyboard and the system information about the expected semantic meaning for the content that users enter. |
+| `onBlur`                      | function     | void          | callback that is called when the text input loses focus.                                                           |
+| `onChangeText` (**Required**) | function     | void          | callback that is called when the text input's text changes.                                                        |
+| `onSubmit` (**Required**)     | function     | void          | callback function called when every code input has a value                                                         |
 
 
 ## Made with 💛 at Brains and Beards
