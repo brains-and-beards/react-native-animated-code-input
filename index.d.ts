@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactNative from "react-native";
 
-declare module "animated-number-input" {
+declare module "react-native-animated-code-input" {
   interface ICodeInputProps {
     afterInputDelay?: number;
     cursorAnimationDuration?: number;
@@ -100,13 +100,13 @@ declare module "animated-number-input" {
       | "oneTimeCode";
   }
 
-  interface AnimatedNumberInputProps extends ICodeInputProps, IInputProps {
+  interface AnimatedCodeInputProps extends ICodeInputProps, IInputProps {
     numberOfInputs: number;
     onSubmitCode: (codeValue: string) => void;
   }
 
-  export default class AnimatedNumberInput extends React.Component<
-    AnimatedNumberInputProps,
+  export default class AnimatedCodeInput extends React.Component<
+    AnimatedCodeInputProps,
     any
   > {}
 }
