@@ -122,7 +122,7 @@ Show some 💛 and star the repo to support the project
 
 ## Author & support
 
-![Brains & Beards Logo](./assets/logo.svg)
+[![Brains & Beards Logo](./assets/logo.svg)](https://brainsandbeards.com)
 
 [Brains and Beards](https://brainsandbeards.com/)
 
