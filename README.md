@@ -57,7 +57,7 @@ import { TextInput, View, StyleSheet } from "react-native";
 import AnimatedCodeInput from "react-native-animated-code-input";
 
 const App: FC = () => {
-  const [code, setCode] = useState < string > "";
+  const [code, setCode] = useState <string> "";
 
   const onChangeText = useCallback((text: string) => {
     setCode(text);
