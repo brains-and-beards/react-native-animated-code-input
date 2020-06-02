@@ -12,14 +12,11 @@ Two-factor authentication, for a good reason, is part of more and more applicati
 
 ## Demo
 
-|                                                Android                                                |                                              iOS                                              |
-| :---------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
-| ![react-native-animated-code-input android demo](assets/react-native-animated-code-input-android.gif) | ![react-native-animated-code-input ios demo](assets/react-native-animated-code-input-ios.gif) |
-
-Automatically fill in SMS passcodes on iOS. On Android the user must tap the Copy button in the notification popup.
+A small demo showing the animations and an automatic fill in of one-time passwords. On Android the user must tap the Copy button in the notification popup.
 
 |                                                             Android                                                             |                                                         iOS                                                         |
 | :-----------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: |
+|              ![react-native-animated-code-input android demo](assets/react-native-animated-code-input-android.gif)              |            ![react-native-animated-code-input ios demo](assets/react-native-animated-code-input-ios.gif)            |
 | ![react-native-animated-code-input android sms autofill demo](assets/react-native-animated-code-input-android-autofill-sms.gif) | ![react-native-animated-code-input ios autofill demo](assets/react-native-animated-code-input-ios-autofill-sms.gif) |
 
 ## Getting started
