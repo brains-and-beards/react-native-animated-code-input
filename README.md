@@ -95,23 +95,23 @@ const styles = StyleSheet.create({
 
 Properties for this component:
 
-| Prop                          | Type         | Default       | Description                                                                                                        |
-| ----------------------------- | ------------ | ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `cursorAnimationDuration`     | number       | 500           | cursor animation duration                                                                                          |
-| `codeAnimationDuration`       | number       | 300           | code animation duration container                                                                                  |
-| `code` (**Required**)         | string       | ''            | code string                                                                                                        |
-| `index`                       | number       | 0             | active code input                                                                                                  |
-| `codeContainerStyle`          | style object | {}            | custom input style                                                                                                 |
-| `activeCodeContainerStyle`    | style object | {}            | custom active input style                                                                                          |
-| `cursorStyle`                 | style object | {}            | custom cursor style                                                                                                |
-| `afterInputDelay`             | number       | 50            | timeout after something is type in an input                                                                        |
-| `textColor`                   | string       | black         | input text color                                                                                                   |
-| `autoFocus`                   | boolean      | true          | input text color                                                                                                   |
-| `numberOfInputs`              | number       | 1             | number of code inputs                                                                                              |
-| `textContentType`             | string       | 'oneTimeCode' | give the keyboard and the system information about the expected semantic meaning for the content that users enter. |
-| `onBlur`                      | function     | void          | callback that is called when the text input loses focus.                                                           |
-| `onChangeText` (**Required**) | function     | void          | callback that is called when the text input's text changes.                                                        |
-| `onSubmit` (**Required**)     | function     | void          | callback function called when every code input has a value                                                         |
+| Prop                            | Type         | Default       | Description                                                                                                                                                                       |
+| ------------------------------- | ------------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `onSubmitCode` (**Required**)   | function     |               | Callback function called when every input field has a value. You will receive code value passed in as parameter                                                                   |
+| `numberOfInputs` (**Required**) | number       |               | Number of code inputs                                                                                                                                                             |
+| `onChangeText`                  | function     | void          | Callback that is called when the text input's text changes.                                                                                                                       |
+| `onBlur`                        | function     | void          | Callback that is called when the text input loses focus.                                                                                                                          |
+| `code`                          | string       | ''            | Use this parameter if you want to preset the fields to a specific value.                                                                                                          |
+| `afterInputDelay`               | number       | 50            | Delay after which an input will be registered and fade in animation will start.                                                                                                   |
+| `cursorAnimationDuration`       | number       | 500           | Cursor animation duration                                                                                                                                                         |
+| `codeAnimationDuration`         | number       | 300           | Code fade in animation duration                                                                                                                                                   |
+| `index`                         | number       | 0             | Active code input field                                                                                                                                                           |
+| `codeContainerStyle`            | style object | {}            | Custom input style                                                                                                                                                                |
+| `activeCodeContainerStyle`      | style object | {}            | Custom active input style                                                                                                                                                         |
+| `cursorStyle`                   | style object | {}            | Custom cursor style                                                                                                                                                               |
+| `textColor`                     | string       | black         | Input text color                                                                                                                                                                  |
+| `autoFocus`                     | boolean      | true          | Set to false if you want the user to press on the code input first before it starts register.                                                                                     |
+| `textContentType`               | string       | 'oneTimeCode' | Give the keyboard and the system information about the expected semantic meaning for the entered content. Leave it set to `oneTimeCode` if you want iOS to auto fill it from SMS. |
 
 ## Made with 💛 at Brains and Beards
 
