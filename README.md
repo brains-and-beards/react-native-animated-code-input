@@ -128,3 +128,7 @@ Show some 💛 and star the repo to support the project
 ![Brains & Beards Logo](./assets/logo.svg)
 
 [Brains and Beards](https://brainsandbeards.com/)
+
+## Credits
+
+Backdrop for the screenshot is an [amazing photo](https://unsplash.com/photos/MS2dni_S3Ew) by Johannes Plenio.
