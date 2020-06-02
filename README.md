@@ -2,7 +2,11 @@
 
 ## Description
 
-An animated code input component for React Native. Support for iOS, Android and React Native Web. This is a fully customizable component that allows the developer to write custom styles for the cursor, a single cell, and input focus. The module is also able to handle autofill after receiving a SMS message.
+Animated code input component for React Native, with support for iOS, Android, and React Native Web. It works with one-time password autofill on iOS and Android.
+
+This component is fully customizable. You can change the appearance of the fields, cursor and animation timing. It presents code in separate input fields without losing support for filling out one time passwords from messages.
+
+Two-factor authentication, for a good reason, is part of more and more applications. Many times the screen where the user has to enter the code is one of the first screens they will see in your app. As you know, users are fast to judge your app quality by the UI. Why not give them a sweet looking eye candy, where your app can stand out from the others? That's why we are sharing with you our Animated Code Input Field.
 
 **Support: RN >=0.59.0**
 
