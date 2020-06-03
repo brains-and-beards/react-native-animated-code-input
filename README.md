@@ -129,3 +129,7 @@ Show some 💛 and star the repo to support the project
 ## Credits
 
 Backdrop for the screenshot is an [amazing photo](https://unsplash.com/photos/MS2dni_S3Ew) by Johannes Plenio.
+
+## Inspiration
+
+Component source inspired by [react-native-input-code](https://github.com/sfjwr/react-native-input-code) by sfjwr
