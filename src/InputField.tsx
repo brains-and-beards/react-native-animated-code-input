@@ -66,13 +66,13 @@ const InputField: React.FC<IProps> = (props: IProps) => {
 
   const onChangeTextCallback = useCallback(
     (text: string) => {
-      const regexValue = text.replace(NON_NUMBER_REGEX, "");
-      const codeChanged = regexValue !== value;
+      const numbersFromText = text.replace(NON_NUMBER_REGEX, "");
+      const codeChanged = numbersFromText !== value;
       if (onChangeText) {
-        onChangeText(regexValue);
+        onChangeText(numbersFromText);
       }
       if (codeChanged) {
-        if (regexValue.length === codeMaxLength) {
+        if (numbersFromText.length === codeMaxLength) {
           Keyboard.dismiss();
         }
       }
