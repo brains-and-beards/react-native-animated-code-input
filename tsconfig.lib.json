@@ -8,9 +8,9 @@
     "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
     "strict": true /* Enable all strict type-checking options. */,
     "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
-    "outDir": "dist",
+    "outDir": "lib",
     "declaration": true,
-    "rootDir": "./lib",
+    "rootDir": "./src",
     "typeRoots": ["node_modules/@types"]
   },
   "exclude": [
@@ -18,7 +18,7 @@
     "babel.config.js",
     "metro.config.js",
     "jest.config.js",
-    "dist"
+    "lib"
   ],
-  "include": ["lib/*"]
+  "include": ["src/*"]
 }

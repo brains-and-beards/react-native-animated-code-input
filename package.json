@@ -4,17 +4,17 @@
   "version": "1.0.0",
   "description": "A react-native component which is an input for confirmation code for Android, iOS and React Native Web",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "build": "yarn lint && tsc --project tsconfig.dist.json"
+    "build": "yarn lint && tsc --project tsconfig.lib.json"
   },
   "peerDependencies": {
     "react": "16.11.0",
