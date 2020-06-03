@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from "react";
+import React, { useCallback } from "react";
 import {
   TextInput,
   NativeSyntheticEvent,
@@ -51,7 +51,7 @@ interface IProps extends IInputProps {
 
 const NON_NUMBER_REGEX = /[^0-9]/g;
 
-const InputField: FC<IProps> = (props) => {
+const InputField: React.FC<IProps> = (props: IProps) => {
   const {
     autoFocus,
     codeMaxLength,

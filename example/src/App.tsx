@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback, useEffect } from "react";
+import React, { FC, useState, useCallback, useEffect } from 'react';
 import {
   Text,
   View,
@@ -7,15 +7,15 @@ import {
   Platform,
   ScrollView,
   SafeAreaView,
-} from "react-native";
-import AnimatedCodeInput from "react-native-animated-code-input";
-import Clipboard from "@react-native-community/clipboard";
+} from 'react-native';
+import AnimatedCodeInput from 'react-native-animated-code-input';
+import Clipboard from '@react-native-community/clipboard';
 
 const NON_NUMBER_REGEX = /[^0-9]/g;
 const NUMBER_OF_INPUTS = 5;
 
 const App: FC = () => {
-  const [code, setCode] = useState<string>("");
+  const [code, setCode] = useState<string>('');
   let intervalId: NodeJS.Timeout;
 
   const onChangeText = useCallback((text: string) => {
@@ -24,27 +24,27 @@ const App: FC = () => {
 
   const onSubmit = useCallback((codeValue: string) => {
     Alert.alert(
-      "DONE",
+      'DONE',
       codeValue,
-      [{ text: "OK", onPress: () => setCode("") }],
+      [{ text: 'OK', onPress: () => setCode('') }],
       { cancelable: false }
     );
   }, []);
 
   const readFromClipboard = useCallback(async () => {
     const clipboardContent = await Clipboard.getString();
-    const value = clipboardContent.replace(NON_NUMBER_REGEX, "");
+    const value = clipboardContent.replace(NON_NUMBER_REGEX, '');
     if (value.length === NUMBER_OF_INPUTS) {
       setCode(value);
       onSubmit(value);
-      await Clipboard.setString("");
+      await Clipboard.setString('');
       clearInterval(intervalId);
     }
   }, []);
 
   // To handle sms code after click "Copy "NUMBER"" ("Copy "12345"") option on Android
   useEffect(() => {
-    if (Platform.OS === "android") {
+    if (Platform.OS === 'android') {
       intervalId = setInterval(() => readFromClipboard(), 1000);
       return () => {
         clearInterval(intervalId);
@@ -57,22 +57,21 @@ const App: FC = () => {
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
-          flexDirection: "column",
-          justifyContent: "space-between",
+          flexDirection: 'column',
+          justifyContent: 'space-between',
         }}
       >
         <View style={styles.scrollContainer}>
           <Text style={styles.title}>
             react-native-animated-code-input demo
           </Text>
-
           <View>
             <AnimatedCodeInput
               value={code}
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
               onSubmitCode={onSubmit}
-              textColor={"black"}
+              textColor={'black'}
               activeCodeContainerStyle={{
                 customStyle: styles.simplyActiveCodeContainer,
               }}
@@ -81,7 +80,7 @@ const App: FC = () => {
               }}
               cursorStyle={styles.simplyCursorStyle}
             />
-
+            
             <View style={{ margin: 10 }} />
 
             <AnimatedCodeInput
@@ -98,7 +97,7 @@ const App: FC = () => {
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
               onSubmitCode={onSubmit}
-              textColor={"white"}
+              textColor={'white'}
               activeCodeContainerStyle={{
                 customStyle: styles.customActiveCodeContainer,
               }}
@@ -113,7 +112,7 @@ const App: FC = () => {
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
               onSubmitCode={onSubmit}
-              textColor={"black"}
+              textColor={'black'}
               activeCodeContainerStyle={{
                 customStyle: styles.borderActiveCodeContainer,
               }}
@@ -132,68 +131,68 @@ const App: FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffde1a",
+    backgroundColor: '#ffde1a',
   },
   scrollContainer: {
     flex: 1,
     marginTop: 30,
   },
   simplyCustomCodeContainer: {
-    backgroundColor: "#ffde1a",
-    color: "#c1cefa",
+    backgroundColor: '#ffde1a',
+    color: '#c1cefa',
     borderRadius: 5,
-    borderColor: "black",
+    borderColor: 'black',
     borderWidth: 2,
   },
   simplyCursorStyle: {
-    color: "black",
+    color: 'black',
   },
   simplyActiveCodeContainer: {
-    backgroundColor: "#ffde1a",
-    borderColor: "black",
+    backgroundColor: '#ffde1a',
+    borderColor: 'black',
     borderRadius: 5,
     borderWidth: 2,
   },
   customCodeContainer: {
-    backgroundColor: "#060054",
-    color: "#c1cefa",
+    backgroundColor: '#060054',
+    color: '#c1cefa',
     borderRadius: 5,
   },
   customActiveCodeContainer: {
-    backgroundColor: "#c1cefa",
-    borderColor: "#060054",
+    backgroundColor: '#c1cefa',
+    borderColor: '#060054',
     borderRadius: 10,
   },
   customCursorStyle: {
-    color: "#00b5f5",
+    color: '#00b5f5',
   },
   borderActiveCodeContainer: {
-    backgroundColor: "#ffde1a",
+    backgroundColor: '#ffde1a',
     borderRadius: 50,
-    borderColor: "#b2b",
+    borderColor: '#b2b',
     borderWidth: 2,
     width: 70,
     height: 70,
   },
   borderCodeContainer: {
-    backgroundColor: "#ffde1a",
+    backgroundColor: '#ffde1a',
     borderRadius: 50,
-    borderColor: "#060054",
+    borderColor: '#060054',
     borderWidth: 2,
     width: 70,
     height: 70,
   },
   cursorStyle: {
-    color: "transparent",
+    color: 'transparent',
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 35,
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: 60,
   },
   footnote: {
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: 10,
   },
 });
