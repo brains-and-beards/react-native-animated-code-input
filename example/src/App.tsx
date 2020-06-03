@@ -68,7 +68,7 @@ const App: FC = () => {
 
           <View>
             <AnimatedCodeInput
-              code={code}
+              value={code}
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
               onSubmitCode={onSubmit}
@@ -85,7 +85,7 @@ const App: FC = () => {
             <View style={{ margin: 10 }} />
 
             <AnimatedCodeInput
-              code={code}
+              value={code}
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
               onSubmitCode={onSubmit}
@@ -94,7 +94,7 @@ const App: FC = () => {
             <View style={{ margin: 10 }} />
 
             <AnimatedCodeInput
-              code={code}
+              value={code}
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
               onSubmitCode={onSubmit}
@@ -109,7 +109,7 @@ const App: FC = () => {
             <View style={{ margin: 10 }} />
 
             <AnimatedCodeInput
-              code={code}
+              value={code}
               numberOfInputs={NUMBER_OF_INPUTS}
               onChangeText={onChangeText}
               onSubmitCode={onSubmit}

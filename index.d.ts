@@ -6,7 +6,7 @@ declare module "react-native-animated-code-input" {
     afterInputDelay?: number;
     cursorAnimationDuration?: number;
     codeAnimationDuration?: number;
-    code: string;
+    value: string;
     index?: number;
     // style props
     codeContainerStyle?: {
@@ -63,11 +63,11 @@ declare module "react-native-animated-code-input" {
 
   interface IInputProps {
     autoFocus?: boolean;
-    code: string;
+    value: string;
     onBlur?: (
       e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputFocusEventData>
     ) => void;
-    onChangeText?: (text: string) => void;
+    onChangeText: (text: string) => void;
     onSubmit?: () => void;
     textContentType?:
       | "none"
@@ -101,7 +101,7 @@ declare module "react-native-animated-code-input" {
   }
 
   interface AnimatedCodeInputProps extends ICodeInputProps, IInputProps {
-    numberOfInputs: number;
+    numberOfInputs?: number;
     onSubmitCode: (codeValue: string) => void;
   }
 

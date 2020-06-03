@@ -13,7 +13,7 @@ import {
 export interface ICodeInputProps {
   cursorAnimationDuration?: number;
   codeAnimationDuration?: number;
-  code: string;
+  value: string;
   index?: number;
   textColor?: string;
   // style props
@@ -91,7 +91,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
 
   const {
     activeCodeContainerStyle,
-    code,
+    value,
     codeAnimationDuration,
     codeContainerStyle,
     cursorAnimationDuration,
@@ -139,7 +139,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
   useEffect(() => {
     const currentIndex = index ? index : 0;
     const text =
-      code.length <= currentIndex ? "" : code.substr(currentIndex, 1);
+      value.length <= currentIndex ? "" : value.substr(currentIndex, 1);
     if (text.length < textValue.length) {
       resetAnimationAfterDelete();
     }
@@ -154,7 +154,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
       );
     }
   }, [
-    code,
+    value,
     index,
     afterInputDelay,
     start,
@@ -176,7 +176,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
   return (
     <View
       style={
-        code.length === index
+        value.length === index
           ? [
               styles.codeContainer,
               activeCodeContainerStyle,
@@ -211,7 +211,7 @@ export const InputSingleItem: FC<ICodeInputProps> = (
           {textValue}
         </Text>
       </Animated.View>
-      {textValue.length === 0 && code.length === index && (
+      {textValue.length === 0 && value.length === index && (
         <Animated.View
           style={{
             opacity: animatedValueCursor,
