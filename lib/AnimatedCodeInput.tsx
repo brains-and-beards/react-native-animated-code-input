@@ -10,19 +10,19 @@ interface IProps extends ICodeInputProps, IInputProps {
 }
 
 const AnimatedCodeInput: FC<IProps> = (props) => {
-  const { code, numberOfInputs, onBlur, onChangeText, onSubmitCode } = props;
+  const { value, numberOfInputs, onBlur, onChangeText, onSubmitCode } = props;
   const animatedCodeInputRef = useRef<TextInput>(null);
 
   const renderItem = useCallback(
     (index: number) => (
       <InputSingleItem
-        code={code}
+        value={value}
         key={`InputSingleItem ${index}`}
         index={index}
         {...props}
       />
     ),
-    [code, props]
+    [value, props]
   );
 
   const onPressCode = useCallback(() => {
@@ -30,8 +30,8 @@ const AnimatedCodeInput: FC<IProps> = (props) => {
   }, [animatedCodeInputRef]);
 
   const onSubmit = useCallback(() => {
-    onSubmitCode(code);
-  }, [code, onSubmitCode]);
+    onSubmitCode(value);
+  }, [value, onSubmitCode]);
 
   return (
     <>
@@ -51,7 +51,7 @@ const AnimatedCodeInput: FC<IProps> = (props) => {
         onChangeText={onChangeText}
         onBlur={onBlur}
         codeMaxLength={numberOfInputs || 1}
-        code={code}
+        value={value}
         testID={"Animated_Code_Input"}
         onSubmit={onSubmit}
         {...props}

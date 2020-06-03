@@ -10,7 +10,7 @@ import {
 
 export interface IInputProps {
   autoFocus?: boolean;
-  code: string;
+  value: string;
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   onChangeText?: (text: string) => void;
   onSubmit?: () => void;
@@ -55,7 +55,7 @@ const InputField: FC<IProps> = (props) => {
   const {
     autoFocus,
     codeMaxLength,
-    code,
+    value,
     onBlur,
     onChangeText,
     onSubmit,
@@ -66,24 +66,24 @@ const InputField: FC<IProps> = (props) => {
 
   const onChangeTextCallback = useCallback(
     (text: string) => {
-      const value = text.replace(NON_NUMBER_REGEX, "");
-      const codeChanged = value !== code;
+      const numbersFromText = text.replace(NON_NUMBER_REGEX, "");
+      const codeChanged = numbersFromText !== value;
       if (onChangeText) {
-        onChangeText(value);
+        onChangeText(numbersFromText);
       }
       if (codeChanged) {
-        if (value.length === codeMaxLength) {
+        if (numbersFromText.length === codeMaxLength) {
           Keyboard.dismiss();
         }
       }
     },
-    [codeMaxLength, code, onChangeText]
+    [codeMaxLength, value, onChangeText]
   );
 
   const onBlurCallback = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
       InteractionManager.runAfterInteractions(() => {
-        if (onSubmit && code.length === codeMaxLength) {
+        if (onSubmit && value.length === codeMaxLength) {
           onSubmit();
         }
       });
@@ -106,7 +106,7 @@ const InputField: FC<IProps> = (props) => {
       style={styles.input}
       testID={testID}
       textContentType={textContentType ? textContentType : "oneTimeCode"}
-      value={code}
+      value={value}
     />
   );
 };
