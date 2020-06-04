@@ -10,11 +10,8 @@
     "lib"
   ],
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "build": "yarn lint && tsc --project tsconfig.lib.json"
+    "build": "yarn lint && tsc --project tsconfig.json"
   },
   "peerDependencies": {
     "react": "16.11.0",

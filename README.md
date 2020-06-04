@@ -73,11 +73,11 @@ const App: FC = () => {
     <>
       <View style={styles.container}>
         <AnimatedCodeInput
-          code={code}
-          numberOfInputs={5}
-          onChangeText={onChangeText}
-          onSubmitCode={onSubmit}
-        />
+              value={code}
+              numberOfInputs={NUMBER_OF_INPUTS}
+              onChangeText={onChangeText}
+              onSubmitCode={onSubmit}
+            />
       </View>
     </>
   );
