@@ -16,8 +16,8 @@ A small demo showing the animations and an automatic fill in of one-time passwor
 
 |                                                             Android                                                             |                                                         iOS                                                         |
 | :-----------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: |
-|              ![react-native-animated-code-input android demo](assets/react-native-animated-code-input-android.gif)              |            ![react-native-animated-code-input ios demo](assets/react-native-animated-code-input-ios.gif)            |
-| ![react-native-animated-code-input android sms autofill demo](assets/react-native-animated-code-input-android-autofill-sms.gif) | ![react-native-animated-code-input ios autofill demo](assets/react-native-animated-code-input-ios-autofill-sms.gif) |
+|              ![react-native-animated-code-input android demo](https://raw.githubusercontent.com/brains-and-beards/react-native-animated-code-input/master/assets/react-native-animated-code-input-android.gif)              |            ![react-native-animated-code-input ios demo](https://github.com/brains-and-beards/react-native-animated-code-input/blob/master/assets/react-native-animated-code-input-ios.gif?raw=true)            |
+| ![react-native-animated-code-input android sms autofill demo](https://raw.githubusercontent.com/brains-and-beards/react-native-animated-code-input/master/assets/react-native-animated-code-input-android-autofill-sms.gif) | ![react-native-animated-code-input ios autofill demo](https://raw.githubusercontent.com/brains-and-beards/react-native-animated-code-input/master/assets/react-native-animated-code-input-ios-autofill-sms.gif) |
 
 ## Getting started
 
