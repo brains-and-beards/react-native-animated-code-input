@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   View,
   Text,
@@ -80,7 +80,7 @@ const DEFAULT_FONT_WEIGHT = "bold";
 const DEFAULT_AFTER_INPUT_DELAY = 50;
 const DEFAULT_TEXT_COLOR = "black";
 
-export const InputSingleItem: FC<ICodeInputProps> = (
+export const InputSingleItem: React.FC<ICodeInputProps> = (
   props: ICodeInputProps
 ) => {
   const [textValue, setTextValue] = useState("");

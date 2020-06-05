@@ -65,7 +65,6 @@ const App: FC = () => {
           <Text style={styles.title}>
             react-native-animated-code-input demo
           </Text>
-
           <View>
             <AnimatedCodeInput
               value={code}

@@ -1,4 +1,5 @@
-import React, { FC, useCallback, useRef } from "react";
+import React, { useCallback, useRef } from "react";
+
 import { View, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
 import InputSingleItem, { ICodeInputProps } from "./InputSingleItem";
@@ -9,17 +10,17 @@ interface IProps extends ICodeInputProps, IInputProps {
   onSubmitCode: (codeValue: string) => void;
 }
 
-const AnimatedCodeInput: FC<IProps> = (props) => {
+const AnimatedCodeInput: React.FC<IProps> = (props: IProps) => {
   const { value, numberOfInputs, onBlur, onChangeText, onSubmitCode } = props;
   const animatedCodeInputRef = useRef<TextInput>(null);
 
   const renderItem = useCallback(
     (index: number) => (
       <InputSingleItem
+        {...props}
         value={value}
         key={`InputSingleItem ${index}`}
         index={index}
-        {...props}
       />
     ),
     [value, props]
@@ -47,6 +48,7 @@ const AnimatedCodeInput: FC<IProps> = (props) => {
         </View>
       </TouchableOpacity>
       <InputField
+        {...props}
         textInputRef={animatedCodeInputRef}
         onChangeText={onChangeText}
         onBlur={onBlur}
@@ -54,7 +56,6 @@ const AnimatedCodeInput: FC<IProps> = (props) => {
         value={value}
         testID={"Animated_Code_Input"}
         onSubmit={onSubmit}
-        {...props}
       />
     </>
   );
