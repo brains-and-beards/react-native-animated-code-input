@@ -8,7 +8,7 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
-import AnimatedCodeInput from "react-native-animated-code-input";
+import AnimatedCodeInput from "@brainsbeards/react-native-animated-code-input";
 import Clipboard from "@react-native-community/clipboard";
 
 const NON_NUMBER_REGEX = /[^0-9]/g;
