@@ -700,7 +700,7 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@brainsbeards/react-native-animated-code-input@1.0.0":
+"@brainsbeards/react-native-animated-code-input@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@brainsbeards/react-native-animated-code-input/-/react-native-animated-code-input-1.0.0.tgz#fd2a311c7a44ea4e321748a6b708000172bbd8f3"
   integrity sha512-103NxC47ussGm5EZaOPbARofqXl1YiZO1NnE/WMF1MqCzNv7ujEGMkG3ciyNXz+u3gac/CxAlJUJnup7ap15Nw==
