@@ -117,7 +117,7 @@ Properties for this component:
 
 Show some 💛 and star the repo to support the project
 
-[![GitHub stars](https://img.shields.io/github/stars/brains-and-beards/animated-pin-input.svg?style=social&label=Star)](https://github.com/brains-and-beards/animated-pin-input) [![GitHub forks](https://img.shields.io/github/forks/brains-and-beards/animated-pin-input.svg?style=social&label=Fork)](https://github.com/brains-and-beards/animated-pin-input/fork) [![GitHub watchers](https://img.shields.io/github/watchers/brains-and-beards/animated-pin-input.svg?style=social&label=Watch)](https://github.com/brains-and-beards/animated-pin-input) [![GitHub followers](https://img.shields.io/github/followers/brains-and-beards.svg?style=social&label=Follow)](https://github.com/brains-and-beards/animated-pin-input)  
+[![GitHub stars](https://img.shields.io/github/stars/brains-and-beards/react-native-animated-code-input.svg?style=social&label=Star)](https://github.com/brains-and-beards/react-native-animated-code-input) [![GitHub forks](https://img.shields.io/github/forks/brains-and-beards/react-native-animated-code-input.svg?style=social&label=Fork)](https://github.com/brains-and-beards/react-native-animated-code-input/fork) [![GitHub watchers](https://img.shields.io/github/watchers/brains-and-beards/react-native-animated-code-input.svg?style=social&label=Watch)](https://github.com/brains-and-beards/react-native-animated-code-input) [![GitHub followers](https://img.shields.io/github/followers/brains-and-beards.svg?style=social&label=Follow)](https://github.com/brains-and-beards/react-native-animated-code-input)  
 [![Twitter Follow](https://img.shields.io/twitter/follow/brainsandbeards.svg?style=social)](https://twitter.com/brainsandbeards)
 
 ## Author & support
