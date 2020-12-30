@@ -15,7 +15,7 @@
     "build": "yarn lint && tsc --project tsconfig.json"
   },
   "peerDependencies": {
-    "react": "16.11.0",
+    "react": ">=16.11.0",
     "react-native": ">=0.59.0"
   },
   "devDependencies": {
